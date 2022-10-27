@@ -1,0 +1,88 @@
+@use "colors.scss";
+.blob {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 30vh;
+  background-color: #30475E;
+  border-radius: 0% 0% 100% 0% / 10% 10% 45% 48%;
+}
+
+.login {
+  width: 40vw;
+  -webkit-box-shadow: 0.5rem 0.5rem 25px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0.5rem 0.5rem 25px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
+  text-align: center;
+  padding: 3vh 4rem;
+  margin-bottom: 20vh;
+}
+
+.login img {
+  width: 7rem;
+  margin-bottom: 2vh;
+}
+
+.login h4 {
+  font-weight: bold;
+}
+
+.login form {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  padding: 1vh 0;
+}
+
+.login form input {
+  width: 100% !important;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #E5E5E5;
+  color: #555555;
+  margin: 0.7vh 0;
+}
+
+.login form button {
+  margin: 2vh 0;
+}
+
+@media (max-width: 768px) {
+  .login {
+    width: 80vw;
+    height: 40vh;
+    -webkit-box-shadow: 0.5rem 0.5rem 25px 0 rgba(0, 0, 0, 0.25);
+            box-shadow: 0.5rem 0.5rem 25px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 2rem;
+    text-align: center;
+    padding: 3vh 10vw;
+    margin-bottom: 20vh;
+  }
+  .login img {
+    width: 15vw;
+    margin-bottom: 2vh;
+  }
+  .login h4 {
+    font-weight: bold;
+  }
+  .login form {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+    padding: 1vh 0;
+  }
+  .login form input {
+    width: 100% !important;
+    border: none;
+    border-radius: .5rem;
+    background-color: #E5E5E5;
+    color: #555555;
+    margin: .7vh 0;
+  }
+  .login form button {
+    margin: 2vh 0;
+  }
+}
+/*# sourceMappingURL=Login.module.css.map */

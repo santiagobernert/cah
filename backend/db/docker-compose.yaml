@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  mysql-development:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: santi1005
+      MYSQL_DATABASE: amebal
+    ports:
+      - "3308:3306"

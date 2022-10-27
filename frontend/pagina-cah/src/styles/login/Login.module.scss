@@ -1,0 +1,73 @@
+@import '../../scss/colors';
+@import '../../scss/mixins';
+
+.blob{
+    @include blob(30vh);
+}
+
+.login {
+    width: 40vw;
+    box-shadow: 0.5rem 0.5rem 25px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 2rem;
+    text-align: center;
+    padding: 3vh 4rem;
+    margin-bottom: 20vh;
+    img {
+      width: 7rem;
+      margin-bottom: 2vh;
+    }
+    h4 {
+      font-weight: bold;
+    }
+    form {
+      justify-content: center;
+      width: 100%;
+      padding: 1vh 0;
+      input {
+        width: 100% !important;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: $gris_claro;
+        color: $gris_oscuro;
+        margin: 0.7vh 0;
+      }
+      button {
+        margin: 2vh 0;
+      }
+    }
+  }
+
+@media(max-width: 768px){
+    .login{
+        width: 80vw;
+        height: 40vh;
+        box-shadow: .5rem .5rem 25px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 2rem;
+        text-align: center;
+        padding: 3vh 10vw;
+        margin-bottom: 20vh;
+        img{
+            width: 15vw;
+            margin-bottom: 2vh;
+        }
+        h4{
+            font-weight: bold;
+        }
+        form{
+            justify-content: center;
+            width: 100%;
+            padding: 1vh 0;
+            input{
+                width: 100% !important;
+                border: none;
+                border-radius: .5rem;
+                background-color: $gris_claro;
+                color: $gris_oscuro;
+                margin: .7vh 0;
+            }
+            button{
+                margin: 2vh 0;
+            }
+        }
+    }
+}
