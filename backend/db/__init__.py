@@ -1,11 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
-from os import path
+import os
 from pymysql import connect, Error
 
 db = SQLAlchemy()
 DB_NAME = 'cah'
 USERNAME = 'root'
-PASSWORD = '1234'
+PASSWORD =  '[$Ant:1005]' 
+print(os.getenv('MYSQL_PASSWORD'))
 
 show_db_query = "SHOW DATABASES"
 
@@ -54,6 +55,6 @@ except Error as e:
 
 '''
 def create_database(app):
-    if not path.exists('backend/' + DB_NAME):
+    if not os.path.exists('backend/' + DB_NAME):
         db.create_all(app=app)
         print('Base de datos creada')

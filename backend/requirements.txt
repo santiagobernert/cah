@@ -1,6 +1,6 @@
 flask==2.2.0
 Flask-SQLAlchemy==2.5.1
 Flask-Login==0.6.2
-Flask-Cors==3.2.10
+Flask-Cors==3.0.10
 pymysql
 cryptography
