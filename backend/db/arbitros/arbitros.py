@@ -11,7 +11,7 @@ class Arbitro(db.Model):
     sexo = db.Column(db.Enum('Masculino', 'Femenino'))
     asociacion = db.Column(db.Integer, db.ForeignKey('Asociaciones.id'))
     nivel = db.Column(db.Integer)
-    partidos = db.relationship(Partido, backref='id_arbitro', foreign_keys=[Partido.arbitro1, Partido.arbitro2])
+    #partidos = db.relationship(Partido, backref='id_arbitro', foreign_keys=[Partido.arbitro1, Partido.arbitro2])
 
 
     def __init__(self, id, nombre, apellido, dni, nacimiento, sexo, asociacion, nivel):

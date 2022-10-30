@@ -5,10 +5,9 @@ class Pase(db.Model):
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=False)
     jugador = db.Column(db.Integer, db.ForeignKey('Jugadores.id'))
     fecha = db.Column(db.Date)
-    club_salida = db.Column(db.Integer, db.ForeignKey('Clubes.id'))
-    club_llegada = db.Column(db.Integer, db.ForeignKey('Clubes.id'))
+    club_salida = db.Column(db.Integer)#, db.ForeignKey('Clubes.id'))
+    club_llegada = db.Column(db.Integer)#, db.ForeignKey('Clubes.id'))
     tipo = db.Column(db.Enum('Nacional', 'Provincial'))
-    pases = db.relationship('Pase', backref='id_club', foreign_keys=[club_salida, club_llegada])
 
 
     def __init__(self, id, jugador, fecha, club_salida, club_llegada, tipo):

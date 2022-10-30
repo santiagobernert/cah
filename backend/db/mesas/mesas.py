@@ -9,7 +9,7 @@ class Mesa(db.Model):
     dni = db.Column(db.Integer, unique=True)
     nacimiento = db.Column(db.Date())
     sexo = db.Column(db.Enum('Masculino', 'Femenino'))
-    partidos = db.relationship('Partido', backref='id_mesa', foreign_keys=[Partido.mesa1, Partido.mesa2])
+    #partidos = db.relationship('Partido', backref='id_mesa', foreign_keys=[Partido.mesa1, Partido.mesa2])
 
 
     def __init__(self, id, nombre, apellido, dni, nacimiento, sexo):

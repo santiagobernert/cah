@@ -4,7 +4,7 @@ class Categoria(db.Model):
     __tablename__ = 'Categorias'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=False)
     nombre = db.Column(db.String(30))
-    años = db.Column(db.String(10))
+    años = db.Column(db.String(15))
     jugadores = db.relationship('Jugador', backref='id_categoria')
     equipos = db.relationship('Equipo', backref='id_categoria')
     torneos = db.relationship('Torneo', backref='id_categoria')
