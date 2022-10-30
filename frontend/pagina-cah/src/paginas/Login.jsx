@@ -1,26 +1,49 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Container, Button, FormControl, FormGroup } from 'react-bootstrap'
 import styles from '/src/styles/login/Login.module.css'
 
-import logo from "/src/assets/react.svg";
+import logo from "/src/assets/logo.png";
 
 
 export default function Login() {
-  const [usuarios, setUsuarios] = useState([]);
+  const [error, setError] = useState('');
+  const [form, setForm] = useState({
+    dni: '',
+    contraseña: ''
+  });
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-
-  const getData = () => {
-    fetch("http://localhost:5000/usuario")
-      .then((res) => res.json())
-      .then((responseJson) => {
-        setdata(responseJson);
-        return responseJson;
-      });
+  const checkUser = () => {
+    console.log(form);
+    fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(form),
+    })
+      .then((response) => {
+        if (response.ok){
+          console.log('no hay error');
+          response.json();
+          console.log(response)
+        }
+        else {
+          console.log("post error", response);
+          setError(response)
+          console.log(error); 
+        }
+          
+      })
   };
+
+  const handleChangeInsert = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
 
   return (
     <div>
@@ -31,11 +54,12 @@ export default function Login() {
                 <h4>Login</h4>
                 <Form>
                     <FormGroup>
-                        <FormControl placeholder="Usuario" />
-                        <FormControl type="password" placeholder="Contraseña" />
+                        <FormControl name='dni' placeholder="Dni" onChange={handleChangeInsert} />
+                        <FormControl name='contraseña' type="password" placeholder="Contraseña" onChange={handleChangeInsert} />
+                        <h6 className='text-danger'>{error}</h6>
                         <a href="">Olvidé mi clave</a>
                     </FormGroup>
-                    <Button type="submit" variant="primary" >Ingresar</Button>
+                    <Button variant="primary" onClick={() => checkUser()}>Ingresar</Button>
                 </Form>
             </Container>
         </div>

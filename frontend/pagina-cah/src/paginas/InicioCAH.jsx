@@ -9,7 +9,6 @@ export default function Inicio() {
     "equipos",
     "jugadores",
     "mesas",
-    "pagos",
     "partidos",
     "pases",
     "sedes",
@@ -31,7 +30,7 @@ export default function Inicio() {
               <a
                 className="text-decoration-none text-white bg-primary p-4 m-3 rounded"
                 target="blank"
-                href={"crud/" + item}
+                href={item}
               >
                 <div key={cruds.indexOf(item)}>
                   <h5>{item}</h5>

@@ -44,24 +44,30 @@ def signup():
 @login.route('/login', methods=['GET', 'POST'])
 def log_in():
     if request.method == 'POST':
-        email = request.form.get('email')
-        contraseña = request.form.get('contraseña')
+        dni = request.json['dni']
+        contraseña = request.json['contraseña']
 
-        usuario = Usuario.query.filter_by(email=email).first()
+        usuario = Usuario.query.filter_by(dni=dni).first()
         if usuario:
-            if check_password_hash(usuario.contraseña, contraseña):
+            #if check_password_hash(usuario.contraseña, contraseña):
+            if usuario.contraseña == contraseña:
                 print('Logged in successfully!')
-                flash('Logged in successfully!')
-                login_user(usuario, remember=True)
-                return redirect(url_for('login.log_in'))
+                print(f'Usuario {usuario.nombre} {usuario.apellido} {dni}, logueado')
+                response = jsonify({
+                'usuario': usuario.__asdict__(),
+                })
+                response.headers.add('Access-Control-Allow-Origin', '*')
+                return response
             else:
                 print('Incorrect password, try again.')
                 flash('Incorrect password, try again.')
+                return jsonify({'error': 'contraseña incorrecta'}), 401
         else:
-            print('Email does not exist.')
-            flash('Email does not exist.')
+            print('User does not exist.')
+            flash('User does not exist.')
+            return jsonify({'error': 'usuario no existe'}), 404
 
-    return render_template('index.html', pagina='login', error='no logueado', usuario='')
+    return jsonify({'error': 'algo'})
 
 @login_required
 @login.route('/logout')
