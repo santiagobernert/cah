@@ -6,7 +6,8 @@ import logo from "/src/assets/logo.png";
 
 
 export default function Login() {
-  const [error, setError] = useState('');
+  const [errorDni, setErrorDni] = useState('');
+  const [errorContraseña, setErrorContraseña] = useState('');
   const [form, setForm] = useState({
     dni: '',
     contraseña: ''
@@ -14,14 +15,7 @@ export default function Login() {
 
   const checkUser = () => {
     console.log(form);
-    fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(form),
-    })
+    fetch(`http://localhost:5000/login?dni=${form.dni}&password=${form.contraseña}`)
       .then((response) => {
         if (response.ok){
           console.log('no hay error');
@@ -30,7 +24,7 @@ export default function Login() {
         }
         else {
           console.log("post error", response);
-          setError(response)
+          setErrorContraseña(response)
           console.log(error); 
         }
           
@@ -54,9 +48,10 @@ export default function Login() {
                 <h4>Login</h4>
                 <Form>
                     <FormGroup>
-                        <FormControl name='dni' placeholder="Dni" onChange={handleChangeInsert} />
-                        <FormControl name='contraseña' type="password" placeholder="Contraseña" onChange={handleChangeInsert} />
-                        <h6 className='text-danger'>{error}</h6>
+                        <FormControl required pattern='[0-9]{7,8}' type='number' name='dni' placeholder="Dni" onChange={handleChangeInsert} />
+                        <h6 className='text-danger'>{errorDni}</h6>
+                        <FormControl required pattern='' name='contraseña' type="password" placeholder="Contraseña" onChange={handleChangeInsert} />
+                        <h6 className='text-danger'>{errorContraseña}</h6>
                         <a href="">Olvidé mi clave</a>
                     </FormGroup>
                     <Button variant="primary" onClick={() => checkUser()}>Ingresar</Button>

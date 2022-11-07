@@ -41,12 +41,11 @@ def signup():
 
     return render_template('index.html', pagina='signup', error='no se encontro usuario', usuario='')
 
-@login.route('/login', methods=['GET', 'POST'])
+@login.route('/login', methods=['GET'])
 def log_in():
-    if request.method == 'POST':
-        dni = request.json['dni']
-        contraseña = request.json['contraseña']
-
+    if request.method == 'GET':
+        dni = request.args['dni']
+        contraseña = request.args['password']
         usuario = Usuario.query.filter_by(dni=dni).first()
         if usuario:
             #if check_password_hash(usuario.contraseña, contraseña):
