@@ -1,0 +1,99 @@
+@import "../scss/colors";
+@import "../scss/mixins";
+
+.transparent{
+    color: transparent;
+}
+
+.tabla {
+  border: none !important;
+  border-width: 0 0 !important;
+  border-radius: 0.5rem;
+  background-color: $blanco;
+  box-shadow: 0.1rem 0.1rem 0.2rem 0.2rem rgba(46, 46, 46, 0.103);
+  color: $negro;
+
+  thead{
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    background-color: $azul_fondo;
+    color: $blanco;
+  }
+
+  td {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+    align-items: center;
+    text-align: center;
+  }
+  td,
+  th {
+    border-width: 0 0;
+  }
+  *{
+    border-bottom-width: 0px !important;
+    border-top-width: 0px !important;
+  }
+  tr{
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+.btn{
+    width: 100%;
+    margin-right: 0.3rem;
+}
+
+@media (max-width: 768px) {
+  .selects_row {
+    display: inline-flex;
+    max-width: 90vw !important;
+    margin-bottom: 1rem;
+    select {
+      width: auto !important;
+      @include select;
+    }
+  }
+  .tabla {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 100%;
+    overflow: scroll;
+    border: none !important;
+    border-radius: 0.5rem;
+    box-shadow: -0.1rem -0.1rem 0.3rem 0.3rem rgba(46, 46, 46, 0.103);
+    background-color: $blanco;
+    color: $negro;
+    * {
+      border-width: 0 !important;
+    }
+    thead {
+      display: table;
+      background-color: $azul_fondo;
+      color: $blanco;
+      th {
+        width: 3.1rem;
+        text-align: center;
+      }
+    }
+    tbody {
+      tr {
+        width: auto;
+        td {
+          padding: 0.8rem 0.5rem;
+          width: 3.1rem !important;
+          text-align: center;
+        }
+      }
+    }
+    .goles {
+      width: auto !important;
+    }
+  }
+}

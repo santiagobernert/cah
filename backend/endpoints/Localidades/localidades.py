@@ -12,9 +12,6 @@ def get_localidades(provincia=''):
     url = f"{API_BASE_URL_LOCALIDADES}provincia={provincia}&campos=nombre&max=20"
     return requests.get(url).json()['departamentos']
 
-localidades = get_localidades('mendoza')
-print([i['nombre'] for i in localidades])
-
 
 localidades = Blueprint('localidades', __name__)
 
@@ -30,11 +27,11 @@ def localidad():
         return response
 
 @localidades.route('/provincia', methods=['GET'])
-def localidad():
+def provincias():
     if request.method == 'GET':
         provincias = get_provincias()
         response = jsonify({
-            'localidades': provincias
+            'provincias': provincias
             })
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response

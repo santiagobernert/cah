@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import styles from "../styles/cruds/Cruds.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Table,
@@ -37,7 +38,7 @@ function AsociacionesCRUD() {
   }, []);
 
   const getData = () => {
-    fetch("http://localhost:5000/asociacion")
+    fetch("http://localhost:8000/asociacion")
       .then((res) => res.json())
       .then((responseJson) => {
         setdata(responseJson);
@@ -46,16 +47,16 @@ function AsociacionesCRUD() {
   };
 
   const getProvincias = () => {
-    fetch("http://localhost:5000/provincia")
+    fetch("http://localhost:8000/provincia")
       .then((res) => res.json())
       .then((responseJson) => {
-        setProvincias(responseJson);
+        setProvincias(responseJson.provincias);
         return responseJson;
       });
   };
 
   const postData = () => {
-    fetch("http://localhost:5000/asociacion", {
+    fetch("http://localhost:8000/asociacion", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +69,7 @@ function AsociacionesCRUD() {
   };
 
   const putData = () => {
-    fetch("http://localhost:5000/asociacion", {
+    fetch("http://localhost:8000/asociacion", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +82,7 @@ function AsociacionesCRUD() {
   };
 
   const deleteData = (id) => {
-    fetch("http://localhost:5000/asociacion", {
+    fetch("http://localhost:8000/asociacion", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -209,9 +210,11 @@ function AsociacionesCRUD() {
       <Container>
         <h2>Asociaciones</h2>
         <br />
-        <input
+        <div className="d-flex justify-content-between mb-2 pe-4">
+          <input
           onChange={(e) => search(e)}
           placeholder="Buscar por nombre"
+          className="form-control w-75 me-0"
           type="text"
         />
         <Button
@@ -221,8 +224,7 @@ function AsociacionesCRUD() {
         >
           Crear
         </Button>
-        <br />
-        <br />
+        </div>
         <Table>
           <thead>
             <tr>

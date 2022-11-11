@@ -1,0 +1,97 @@
+.transparent {
+  color: transparent;
+}
+
+.tabla {
+  border: none !important;
+  border-width: 0 0 !important;
+  border-radius: 0.5rem;
+  background-color: rgba(250, 250, 250, 0.9803921569);
+  box-shadow: 0.1rem 0.1rem 0.2rem 0.2rem rgba(46, 46, 46, 0.103);
+  color: #121212;
+}
+.tabla thead {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background-color: #30475E;
+  color: rgba(250, 250, 250, 0.9803921569);
+}
+.tabla td {
+  display: flex;
+  justify-content: center;
+  width: 100% !important;
+  align-items: center;
+  text-align: center;
+}
+.tabla td,
+.tabla th {
+  border-width: 0 0;
+}
+.tabla * {
+  border-bottom-width: 0px !important;
+  border-top-width: 0px !important;
+}
+.tabla tr {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn {
+  width: 100%;
+  margin-right: 0.3rem;
+}
+
+@media (max-width: 768px) {
+  .selects_row {
+    display: inline-flex;
+    max-width: 90vw !important;
+    margin-bottom: 1rem;
+  }
+  .selects_row select {
+    width: auto !important;
+    width: auto;
+    background-color: transparent !important;
+    color: rgba(250, 250, 250, 0.9803921569) !important;
+    border: none !important;
+    background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27><path fill=%27none%27 stroke=%27%23fefefe%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27M2 5l6 6 6-6%27/></svg>") !important;
+    font-weight: 500 !important;
+  }
+  .tabla {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 100%;
+    overflow: scroll;
+    border: none !important;
+    border-radius: 0.5rem;
+    box-shadow: -0.1rem -0.1rem 0.3rem 0.3rem rgba(46, 46, 46, 0.103);
+    background-color: rgba(250, 250, 250, 0.9803921569);
+    color: #121212;
+  }
+  .tabla * {
+    border-width: 0 !important;
+  }
+  .tabla thead {
+    display: table;
+    background-color: #30475E;
+    color: rgba(250, 250, 250, 0.9803921569);
+  }
+  .tabla thead th {
+    width: 3.1rem;
+    text-align: center;
+  }
+  .tabla tbody tr {
+    width: auto;
+  }
+  .tabla tbody tr td {
+    padding: 0.8rem 0.5rem;
+    width: 3.1rem !important;
+    text-align: center;
+  }
+  .tabla .goles {
+    width: auto !important;
+  }
+}/*# sourceMappingURL=Cruds.module.css.map */

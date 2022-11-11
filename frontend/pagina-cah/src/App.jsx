@@ -18,8 +18,6 @@ import InicioCAH from "/src/paginas/InicioCAH.jsx";
 import Login from "/src/paginas/Login.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
       <BrowserRouter>

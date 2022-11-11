@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-
+import styles from "../styles/cruds/Cruds.module.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -15,85 +15,6 @@ import {
 } from "react-bootstrap";
 
 function ClubesCRUD() {
-  const EQUIPOS = [
-    {
-      id: 1,
-      nombre: "Municipalidad de Capital",
-      imagen: require("../imgs/equipos/capital.png"),
-    },
-    {
-      id: 2,
-      nombre: "Etiec",
-      imagen: require("../imgs/equipos/etiec.png"),
-    },
-  
-    {
-      id: 3,
-      nombre: "Filippini",
-      imagen: require("../imgs/equipos/filippini.png"),
-    },
-    {
-      id: 4,
-      nombre: "Gimnasia y Esgrima",
-      imagen: require("../imgs/equipos/gimnasia_y_esgrima.png"),
-    },
-    {
-      id: 5,
-      nombre: "Godoy Cruz",
-      imagen: require("../imgs/equipos/godoy_cruz.png"),
-    },
-    {
-      id: 6,
-      nombre: "Municipalidad de Junin",
-      imagen: require("../imgs/equipos/junin.png"),
-    },
-    {
-      id: 7,
-      nombre: "Municipalidad de Lujan",
-      imagen: require("../imgs/equipos/lujan.png"),
-    },
-    {
-      id: 8,
-      nombre: "Municipalidad de Maipu",
-      imagen: require("../imgs/equipos/maipu.png"),
-    },
-    {
-      id: 9,
-      nombre: "Palmira",
-      imagen: require("../imgs/equipos/palmira.png"),
-    },
-    {
-      id: 10,
-      nombre: "Club Mendoza de Regatas",
-      imagen: require("../imgs/equipos/regatas.png"),
-    },
-    {
-      id: 11,
-      nombre: "Rodeo del Medio",
-      imagen: require("../imgs/equipos/rodeo_del_medio.png"),
-    },
-    {
-      id: 12,
-      nombre: "Russel",
-      imagen: require("../imgs/equipos/russel.png"),
-    },
-  
-    {
-      id: 13,
-      nombre: "Municipalidad de Tunuyan",
-      imagen: require("../imgs/equipos/tunuyan.png"),
-    },
-    {
-      id: 14,
-      nombre: "Municipalidad de Tupungato",
-      imagen: require("../imgs/equipos/tupungato.png"),
-    },
-    {
-      id: 15,
-      nombre: "Universidad Nacional de Cuyo",
-      imagen: require("../imgs/equipos/uncuyo.png"),
-    },
-  ];
   const [clubes, setClubes] = useState([]);
   const [asociaciones, setAsociaciones] = useState([]);
   const [modalActualizar, setmodalActualizar] = useState({
@@ -115,7 +36,7 @@ function ClubesCRUD() {
   }, []);
 
   const getClubes = () => {
-    fetch("http://localhost:5000/club")
+    fetch("http://localhost:8000/club")
       .then((res) => res.json())
       .then((responseJson) => {
         console.log(responseJson.clubes);
@@ -126,7 +47,7 @@ function ClubesCRUD() {
   };
 
   const getAsociaciones = () => {
-    fetch("http://localhost:5000/asociacion")
+    fetch("http://localhost:8000/asociacion")
       .then((res) => res.json())
       .then((responseJson) => {
         console.log(responseJson.asociaciones);
@@ -146,7 +67,7 @@ function ClubesCRUD() {
   });
 
   const postdata = () => {
-    fetch("http://localhost:5000/club", {
+    fetch("http://localhost:8000/club", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -159,7 +80,7 @@ function ClubesCRUD() {
   };
 
   const putData = () => {
-    fetch("http://localhost:5000/club", {
+    fetch("http://localhost:8000/club", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -172,7 +93,7 @@ function ClubesCRUD() {
   };
 
   const deleteData = (id) => {
-    fetch("http://localhost:5000/club", {
+    fetch("http://localhost:8000/club", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -302,17 +223,22 @@ function ClubesCRUD() {
       <Container>
         <h2>Clubes</h2>
         <br />
-        <input
+        <div className="d-flex justify-content-between mb-2 pe-4">
+          <input
           onChange={(e) => search(e)}
           placeholder="Buscar por nombre"
+          className="form-control w-75 me-0"
           type="text"
         />
-        <Button color="success" onClick={() => mostrarModalInsertar()}>
+        <Button
+          ms="auto"
+          color="success"
+          onClick={() => mostrarModalInsertar()}
+        >
           Crear
         </Button>
-        <br />
-        <br />
-        <Table>
+        </div>
+        <Table className={styles.tabla}>
           <thead>
             <tr>
               <th>ID</th>
@@ -321,7 +247,7 @@ function ClubesCRUD() {
               <th>Corto</th>
               <th>Abreviatura</th>
               <th>Escudo</th>
-              <th>_</th>
+              <th>Acciones</th>
             </tr>
           </thead>
 
@@ -332,23 +258,24 @@ function ClubesCRUD() {
                 <td>{club.nombre}</td>
                 <td>
                   {asociaciones.find((a) => a.id == club.asociacion)
-                    ? asociaciones.find((a) => a.id == club.asociacion).nombre
+                    ? asociaciones.find((a) => a.id == club.asociacion).abreviatura
                     : ""}
                 </td>
                 <td>{club.nombrecorto}</td>
                 <td>{club.abreviatura}</td>
                 <td>
                   {" "}
-                  <img src={club.escudo} alt={club.nombre} />{" "}
+                  <img src={club.escudo} alt={club.abreviatura} />{" "}
                 </td>
-                <td>
+                <td className="d-block">
                   <Button
                     color="primary"
+                    className="w-100"
                     onClick={() => mostrarModalActualizar(club)}
                   >
                     Editar
                   </Button>{" "}
-                  <Button color="danger" onClick={() => eliminar(club)}>
+                  <Button variant="danger" onClick={() => eliminar(club)}>
                     Eliminar
                   </Button>
                 </td>
