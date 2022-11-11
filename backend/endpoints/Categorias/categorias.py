@@ -4,7 +4,7 @@ from db import db
 
 categorias = Blueprint('categorias', __name__)
 
-@categorias.route('/categorias', methods=['GET'])
+@categorias.route('/categoria', methods=['GET'])
 def categoria():
     categorias = Categoria.query.all()
     if request.method == 'GET':

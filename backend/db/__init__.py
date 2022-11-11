@@ -58,4 +58,4 @@ except Error as e:
 def create_database(app):
     if not os.path.exists('backend/' + DB_NAME):
         db.create_all(app=app)
-        print('Base de datos creada')
+        print('Base de datos conectada')
