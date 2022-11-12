@@ -265,7 +265,7 @@ function ClubesCRUD() {
                 <td>{club.abreviatura}</td>
                 <td>
                   {" "}
-                  <img src={club.escudo} alt={club.abreviatura} />{" "}
+                  <img style={{width: "5rem", height: "5rem"}} src={club.escudo} alt={club.abreviatura} />{" "}
                 </td>
                 <td className="d-block">
                   <Button

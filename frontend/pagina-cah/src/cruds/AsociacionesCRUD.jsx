@@ -232,7 +232,7 @@ function AsociacionesCRUD() {
               <th>Nombre</th>
               <th>Abreviatura</th>
               <th>Provincia</th>
-              <th>_</th>
+              <th>Acciones</th>
             </tr>
           </thead>
 
@@ -250,7 +250,7 @@ function AsociacionesCRUD() {
                   >
                     Editar
                   </Button>{" "}
-                  <Button color="danger" onClick={() => eliminar(asociacion)}>
+                  <Button variant="danger" onClick={() => eliminar(asociacion)}>
                     Eliminar
                   </Button>
                 </td>
@@ -314,7 +314,7 @@ function AsociacionesCRUD() {
             >
               {provincias.map((provincia) => {
                 return (
-                  <option value={provincia.id} key={provincia.id}>
+                  <option value={provincia.nombre} key={provincia.id}>
                     {provincia.nombre}
                   </option>
                 );
