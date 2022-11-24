@@ -57,7 +57,6 @@ def club():
         club.asociacion = valores['asociacion']
         club.nombrecorto = valores['nombrecorto']
         club.abreviatura = valores['abreviatura']
-        club.escudo = valores['escudo']
         db.session.commit()
         print('Club ', id, ' editado')
         clubes = Club.query.all()

@@ -210,7 +210,7 @@ function AsociacionesCRUD() {
       <Container>
         <h2>Asociaciones</h2>
         <br />
-        <div className="d-flex justify-content-between mb-2 pe-4">
+        <div className="d-flex justify-content-between mb-2 pe-2">
           <input
           onChange={(e) => search(e)}
           placeholder="Buscar por nombre"
@@ -223,6 +223,13 @@ function AsociacionesCRUD() {
           onClick={() => mostrarModalInsertar()}
         >
           Crear
+        </Button>
+        <Button
+          ms="auto"
+          color="success"
+          onClick={() => mostrarModalInsertar()}
+        >
+          Cargar planilla
         </Button>
         </div>
         <Table>
