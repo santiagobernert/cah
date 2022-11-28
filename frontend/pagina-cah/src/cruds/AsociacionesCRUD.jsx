@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import useDrivePicker from 'react-google-drive-picker'
 import styles from "../styles/cruds/Cruds.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -20,6 +21,8 @@ function AsociacionesCRUD() {
     asociacion: data.asociaciones.length,
   });
   const [modalInsertar, setmodalInsertar] = useState(false);
+  const [modalCargar, setmodalCargar] = useState(false);
+  const [openPicker, sheet, authResponse] = useDrivePicker()
   const [form, setform] = useState({
     id: 1,
     nombre: "",
@@ -32,6 +35,7 @@ function AsociacionesCRUD() {
     abreviatura: useRef(""),
     provincia: useRef(""),
   });
+  const [planilla, setplanilla] = useState('');
   useEffect(() => {
     getData();
     getProvincias();
@@ -108,13 +112,19 @@ function AsociacionesCRUD() {
   };
 
   const mostrarModalInsertar = () => {
-    console.log("mostrar insertar");
     setmodalInsertar(true);
   };
 
   const cerrarModalInsertar = () => {
-    console.log("cerrar insertar");
     setmodalInsertar(false);
+  };
+
+  const mostrarModalCargar = () => {
+    setmodalCargar(true);
+  };
+
+  const cerrarModalCargar = () => {
+    setmodalCargar(false);
   };
 
   const editar = (dato) => {
@@ -172,6 +182,19 @@ function AsociacionesCRUD() {
     setmodalInsertar(false);
   };
 
+  const cargarPlanilla = () => {
+    fetch("http://localhost:8000/asociacion/planilla", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(planilla),
+    })
+      .then((response) => response.json())
+      .catch((error) => console.log("post", error));
+  }
+
   const handleChangeEdit = (e) => {
     setform({
       id: ref.current["id"].current.value,
@@ -187,6 +210,23 @@ function AsociacionesCRUD() {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleChangeCargar = (e) => {
+    setplanilla(e.target.value);
+  };
+
+  const handleOpenPicker = () => {
+    openPicker({
+      clientId: "865613334786-25eotn5emqi1ufg9cqt2nv0o9u7a28h1.apps.googleusercontent.com",
+      developerKey: "AIzaSyBq9U2LIqjsufEWQ0tPnGsGauONmRU-CO8",
+      token: 'ya29.a0AeTM1iek8IS8ZNl1P17T9jCD1SCmGiQyburUTitlaMgNdw3syUnwSEY2dw-QCRTBSsE23w53gUbzkaga1-CRGWjtV8ci0oG27dNsBw-plk9F3Gix2fRkL-_l-jGBmNkpJ5ouYw3_-kmgZjaGRQ7wB4L6-eA1aCgYKAUkSARMSFQHWtWOm6P-xOFjKJkbqgBvdqTVLCQ0163',
+      viewId: "SPREADSHEETS",
+      showUploadView: true,
+      showUploadFolders: true,
+      supportDrives: true,
+      multiselect: false
+    })
+  }
 
   const search = (e) => {
     let searchData = [];
@@ -227,7 +267,7 @@ function AsociacionesCRUD() {
         <Button
           ms="auto"
           color="success"
-          onClick={() => mostrarModalInsertar()}
+          onClick={() => mostrarModalCargar()}
         >
           Cargar planilla
         </Button>
@@ -406,6 +446,38 @@ function AsociacionesCRUD() {
             className="btn btn-danger"
             onClick={() => cerrarModalInsertar()}
           >
+            Cancelar
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal show={modalCargar}>
+        <ModalHeader>
+          <div>
+            <h3>Cargar datos</h3>
+          </div>
+        </ModalHeader>
+
+        <ModalBody>
+            <div className="form-group">
+              <label>Link de la planilla</label>
+              <input
+              className="form-control mb-2"
+              name="planilla"
+              type="text"
+              onChange={handleChangeCargar}
+              />
+              <button color='primary' onClick={() => handleOpenPicker()}>Subir desde Drive</button>
+            </div>
+          
+
+        </ModalBody>
+
+        <ModalFooter>
+          <Button color="primary" onClick={() => cargarPlanilla()}>
+            Cargar
+          </Button>
+          <Button color="danger" onClick={() => cerrarModalCargar()}>
             Cancelar
           </Button>
         </ModalFooter>

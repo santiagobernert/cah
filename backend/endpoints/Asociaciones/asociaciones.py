@@ -70,8 +70,6 @@ def asociacion():
         id = request.get_json()
         print(id)
         asociacion = Asociacion.query.filter_by(id=id)
-        clubes_relacionados = Club.query.filter_by(asociacion=id)
-        clubes_relacionados.update({'asociacion': None})
         asociacion.delete()
         db.session.commit()
         print('Asociacion ', id, ' eliminado')
@@ -82,3 +80,14 @@ def asociacion():
             })
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
+
+@asociaciones.route('/asociacion/planilla', methods=['POST'])
+def planilla():
+    if request.method == 'POST':
+        Asociacion.drop
+        table = 'Asociaciones'
+        sheetid = '1sU6CAshM2jg9rAsa4pDM59TuNkLP3xnto-7_RplvAMw'
+        sheet = f'https://docs.google.com/spreadsheets/d/{sheetid}/gviz/tq?tqx=out:csv&sheet={table}'
+        df = pd.read_csv(sheet)
+        engine = create_engine(f'mysql+pymysql://{USERNAME}:{PASSWORD}@127.0.0.1:3308/{DB_NAME}')
+        df.to_sql(table, con=engine, if_exists='replace')
