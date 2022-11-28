@@ -3,7 +3,7 @@ from db import db
 class Pase(db.Model):
     __tablename__ = 'Pases'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=False)
-    jugador = db.Column(db.Integer, db.ForeignKey('Jugadores.id'))
+    jugador = db.Column(db.Integer)
     fecha = db.Column(db.Date)
     club_salida = db.Column(db.Integer)#, db.ForeignKey('Clubes.id'))
     club_llegada = db.Column(db.Integer)#, db.ForeignKey('Clubes.id'))

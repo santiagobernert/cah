@@ -5,8 +5,7 @@ class Estadistica(db.Model):
     __tablename__ = 'Estadisticas'
     id = db.Column('id', db.Integer, primary_key=True, unique=True, autoincrement=False)
     partido = db.Column(db.Integer, db.ForeignKey(Partido.id))
-    equipo = db.Column(db.Integer, db.ForeignKey('Equipos.id'))
-    jugador = db.Column(db.Integer, db.ForeignKey('Jugadores.id'))
+    equipo = db.Column(db.Integer)
     goles = db.Column(db.Integer)
     tiros = db.Column(db.Integer)
     amarilla = db.Column(db.Integer)

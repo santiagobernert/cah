@@ -8,7 +8,7 @@ class Tecnico(db.Model):
     dni = db.Column(db.Integer, unique=True)
     nacimiento = db.Column(db.Date())
     sexo = db.Column(db.Enum('Masculino', 'Femenino'))
-    asociacion = db.Column(db.Integer, db.ForeignKey('Asociaciones.id'))
+    asociacion = db.Column(db.String(100))
     nivel = db.Column(db.Integer)
     equipos = db.Column(db.String(20))
     #pases = db.relationship('Pase', backref='id_tecnico')

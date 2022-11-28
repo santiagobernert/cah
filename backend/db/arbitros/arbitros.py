@@ -9,7 +9,7 @@ class Arbitro(db.Model):
     dni = db.Column(db.Integer, unique=True)
     nacimiento = db.Column(db.Date())
     sexo = db.Column(db.Enum('Masculino', 'Femenino'))
-    asociacion = db.Column(db.Integer, db.ForeignKey('Asociaciones.id'))
+    asociacion = db.Column(db.String(100))
     nivel = db.Column(db.Integer)
     #partidos = db.relationship(Partido, backref='id_arbitro', foreign_keys=[Partido.arbitro1, Partido.arbitro2])
 

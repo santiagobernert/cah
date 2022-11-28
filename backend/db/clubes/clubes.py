@@ -4,8 +4,8 @@ from db.pases.pases import Pase
 class Club(db.Model):
     __tablename__ = 'Clubes'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=False)
-    nombre = db.Column(db.String(30))
-    asociacion = db.Column(db.Integer, db.ForeignKey('Asociaciones.id'))
+    nombre = db.Column(db.String(100))
+    asociacion = db.Column(db.String(100))
     nombrecorto = db.Column(db.String(12))
     abreviatura = db.Column(db.String(3))
     escudo = db.Column(db.String(100))

@@ -5,8 +5,8 @@ from db.partidos.partidos import Partido
 class Equipo(db.Model):
     __tablename__ = 'Equipos'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=False)
-    club = db.Column(db.Integer, db.ForeignKey('Clubes.id'))
-    categoria = db.Column(db.Integer, db.ForeignKey('Categorias.id'))
+    club = db.Column(db.String(100))
+    categoria = db.Column(db.String(20))
     jugadores = db.Column(db.String(40))
     tecnicos = db.Column(db.String(10))
     refuerzos = db.Column(db.String(10))

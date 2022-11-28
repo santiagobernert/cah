@@ -3,7 +3,7 @@ from db import db
 class Fecha(db.Model):
     __tablename__ = 'Fechas'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=False)
-    torneo = db.Column(db.Integer, db.ForeignKey('Torneos.id'))
+    torneo = db.Column(db.Integer)
     inicio = db.Column(db.Date)
     fin = db.Column(db.Date)
     partidos = db.relationship('Partido', backref='id_fecha')
