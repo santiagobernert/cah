@@ -9,9 +9,6 @@ class Club(db.Model):
     nombrecorto = db.Column(db.String(12))
     abreviatura = db.Column(db.String(3))
     escudo = db.Column(db.String(100))
-    jugadores = db.relationship('Jugador', backref='nombre_club')
-    equipos = db.relationship('Equipo', backref='id_club')
-    #pases = db.relationship('Pase', backref='id_club', foreign_keys=[Pase.club_salida, Pase.club_llegada])
 
 
 

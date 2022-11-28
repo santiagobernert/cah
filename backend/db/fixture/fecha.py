@@ -6,7 +6,6 @@ class Fecha(db.Model):
     torneo = db.Column(db.Integer)
     inicio = db.Column(db.Date)
     fin = db.Column(db.Date)
-    partidos = db.relationship('Partido', backref='id_fecha')
 
 
     def __init__(self, id, torneo, inicio, fin):

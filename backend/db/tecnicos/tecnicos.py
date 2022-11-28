@@ -11,7 +11,6 @@ class Tecnico(db.Model):
     asociacion = db.Column(db.String(100))
     nivel = db.Column(db.Integer)
     equipos = db.Column(db.String(20))
-    #pases = db.relationship('Pase', backref='id_tecnico')
 
     def __init__(self, id, nombre, apellido, dni, nacimiento, sexo, asociacion, nivel, equipos):
         self.id = id

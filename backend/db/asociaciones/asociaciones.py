@@ -8,7 +8,6 @@ class Asociacion(db.Model):
     nombre = db.Column(db.String(100))
     abreviatura = db.Column(db.String(12))
     provincia = db.Column(db.String(25))
-    clubes = db.relationship(Club, backref='nombre_asociacion')
 
     def __init__(self, id, nombre, abreviatura, provincia):
         self.id = id

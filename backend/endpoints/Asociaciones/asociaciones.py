@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, url_for, Blueprint, render_template, flash, jsonify
 from db.asociaciones.asociaciones import Asociacion, nueva_asociacion
 from db import db
+from db.insertexcel import insert_from_sheet
 
 asociaciones = Blueprint('asociaciones', __name__)
 
@@ -84,10 +85,15 @@ def asociacion():
 @asociaciones.route('/asociacion/planilla', methods=['POST'])
 def planilla():
     if request.method == 'POST':
-        Asociacion.drop
+        print('post planilla')
+        Asociacion.query.delete()
         table = 'Asociaciones'
-        sheetid = '1sU6CAshM2jg9rAsa4pDM59TuNkLP3xnto-7_RplvAMw'
-        sheet = f'https://docs.google.com/spreadsheets/d/{sheetid}/gviz/tq?tqx=out:csv&sheet={table}'
-        df = pd.read_csv(sheet)
-        engine = create_engine(f'mysql+pymysql://{USERNAME}:{PASSWORD}@127.0.0.1:3308/{DB_NAME}')
-        df.to_sql(table, con=engine, if_exists='replace')
+        sheetid = request.json
+        insert_from_sheet(sheetid, table)
+        asociaciones = Asociacion.query.all()
+        print([a.__asdict__() for a in asociaciones])
+        response = jsonify({
+            'asociaciones': [a.__asdict__() for a in asociaciones],
+            })
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response

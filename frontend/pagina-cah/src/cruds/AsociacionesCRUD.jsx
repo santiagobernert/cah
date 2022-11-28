@@ -183,6 +183,7 @@ function AsociacionesCRUD() {
   };
 
   const cargarPlanilla = () => {
+    setmodalCargar(false);
     fetch("http://localhost:8000/asociacion/planilla", {
       method: "POST",
       headers: {
@@ -193,6 +194,7 @@ function AsociacionesCRUD() {
     })
       .then((response) => response.json())
       .catch((error) => console.log("post", error));
+
   }
 
   const handleChangeEdit = (e) => {

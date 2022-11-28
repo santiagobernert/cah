@@ -5,7 +5,6 @@ class Rol(db.Model):
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=False)
     nombre = db.Column(db.String(30))
     letra = db.Column(db.String(2))
-    usuarios = db.relationship('Usuario', backref='id_rol')
 
 
     def __init__(self, id, nombre, letra):

@@ -11,7 +11,6 @@ class Usuario(db.Model, UserMixin):
     email = db.Column(db.String(50))
     contraseña = db.Column(db.String(50))
     rol = db.Column(db.Integer)
-    #pagos = db.relationship('Pago', backref='id_usuario')
 
     def __init__(self, id, nombre, apellido, dni, email, contraseña, rol):
         self.id = id

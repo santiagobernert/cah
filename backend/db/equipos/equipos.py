@@ -11,8 +11,6 @@ class Equipo(db.Model):
     tecnicos = db.Column(db.String(10))
     refuerzos = db.Column(db.String(10))
     año = db.Column(db.String(4))
-    estadisticas = db.relationship('Estadistica', backref='id_club')
-    #partidos = db.relationship('Partido', backref='id_equipo', foreign_keys=[Partido.equipoA, Partido.equipoB])
 
     
 

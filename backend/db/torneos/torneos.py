@@ -9,7 +9,6 @@ class Torneo(db.Model):
     equipos = db.Column(db.String(100))
     ubicacion = db.Column(db.String(100))
     categoria = db.Column(db.String(20))
-    partidos = db.relationship('Partido', backref='id_torneo')
     
 
     def __init__(self, id, nombre, inicio, fin, equipos, ubicacion, categoria):
