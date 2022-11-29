@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import useDrivePicker from 'react-google-drive-picker'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Table,
@@ -22,6 +23,8 @@ function JugadoresCRUD() {
     jugador: data.jugadores.length,
   });
   const [modalInsertar, setmodalInsertar] = useState(false);
+  const [modalCargar, setmodalCargar] = useState(false);
+  const [openPicker, sheet, authResponse] = useDrivePicker();
   const [form, setform] = useState({
     id: 1,
     nombre: "",
@@ -44,16 +47,16 @@ function JugadoresCRUD() {
     categoria: useRef(0),
     club: useRef(0),
   });
+  const [planilla, setplanilla] = useState('');
   useEffect(() => {
     getCategorias();
     getClubes();
     getEquipos();
     getData();
-    console.log(clubes, categorias);
   }, []);
 
   const getCategorias = () => {
-    fetch("http://localhost:5000/categorias")
+    fetch("http://localhost:8000/categoria")
       .then((res) => res.json())
       .then((responseJson) => {
         setCategorias(responseJson.categorias);
@@ -62,7 +65,7 @@ function JugadoresCRUD() {
   };
 
   const getClubes = () => {
-    fetch("http://localhost:5000/club")
+    fetch("http://localhost:8000/club")
       .then((res) => res.json())
       .then((responseJson) => {
         setClubes(responseJson.clubes);
@@ -71,7 +74,7 @@ function JugadoresCRUD() {
   };
 
   const getEquipos = () => {
-    fetch("http://localhost:5000/equipo")
+    fetch("http://localhost:8000/equipo")
       .then((res) => res.json())
       .then((responseJson) => {
         setEquipos(responseJson.equipos);
@@ -80,7 +83,7 @@ function JugadoresCRUD() {
   };
 
   const getData = () => {
-    fetch("http://localhost:5000/jugador")
+    fetch("http://localhost:8000/jugador")
       .then((res) => res.json())
       .then((responseJson) => {
         setdata(responseJson);
@@ -89,7 +92,7 @@ function JugadoresCRUD() {
   };
 
   const postData = () => {
-    fetch("http://localhost:5000/jugador", {
+    fetch("http://localhost:8000/jugador", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -102,7 +105,7 @@ function JugadoresCRUD() {
   };
 
   const putData = () => {
-    fetch("http://localhost:5000/jugador", {
+    fetch("http://localhost:8000/jugador", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -115,7 +118,7 @@ function JugadoresCRUD() {
   };
 
   const deleteData = (id) => {
-    fetch("http://localhost:5000/jugador", {
+    fetch("http://localhost:8000/jugador", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -129,6 +132,19 @@ function JugadoresCRUD() {
 
   const mostrarModalActualizar = (jugador) => {
     console.log("mostrar actualizar");
+    setform({
+      id: jugador.id,
+      nombre: jugador.nombre,
+      apellido: jugador.apellido,
+      dni: jugador.dni,
+      nacimiento: jugador.nacimiento,
+      sexo: jugador.sexo,
+      equipo: jugador.equipo,
+      categoria: jugador.categoria,
+      club: jugador.club,
+    });
+    console.log(jugador);
+    console.log(form);
     setmodalActualizar({ abierto: true, jugador: jugador });
   };
 
@@ -146,8 +162,15 @@ function JugadoresCRUD() {
   };
 
   const cerrarModalInsertar = () => {
-    console.log("cerrar insertar");
     setmodalInsertar(false);
+  };
+
+  const mostrarModalCargar = () => {
+    setmodalCargar(true);
+  };
+
+  const cerrarModalCargar = () => {
+    setmodalCargar(false);
   };
 
   const editar = (dato) => {
@@ -211,6 +234,21 @@ function JugadoresCRUD() {
     setmodalInsertar(false);
   };
 
+  const cargarPlanilla = () => {
+    setmodalCargar(false);
+    fetch("http://localhost:8000/jugador/planilla", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(planilla),
+    })
+      .then((response) => response.json()).then(responseJson => setdata(responseJson))
+      .catch((error) => console.log("post", error));
+
+  }
+
   const handleChangeEdit = (e) => {
     setform({
       id: ref.current["id"].current.value,
@@ -238,12 +276,30 @@ function JugadoresCRUD() {
     console.log(form);
   };
 
+  const handleChangeCargar = (e) => {
+    setplanilla(e.target.value);
+  };
+
+  const handleOpenPicker = () => {
+    openPicker({
+      clientId: "865613334786-25eotn5emqi1ufg9cqt2nv0o9u7a28h1.apps.googleusercontent.com",
+      developerKey: "AIzaSyBq9U2LIqjsufEWQ0tPnGsGauONmRU-CO8",
+      token: 'ya29.a0AeTM1iek8IS8ZNl1P17T9jCD1SCmGiQyburUTitlaMgNdw3syUnwSEY2dw-QCRTBSsE23w53gUbzkaga1-CRGWjtV8ci0oG27dNsBw-plk9F3Gix2fRkL-_l-jGBmNkpJ5ouYw3_-kmgZjaGRQ7wB4L6-eA1aCgYKAUkSARMSFQHWtWOm6P-xOFjKJkbqgBvdqTVLCQ0163',
+      viewId: "SPREADSHEETS",
+      showUploadView: true,
+      showUploadFolders: true,
+      supportDrives: true,
+      multiselect: false
+    })
+  }
+
   const search = (e) => {
     let searchData = [];
     if (e.target.value !== "") {
       data.jugadores.map((jugador) => {
         if (
-          jugador.nombre.toLowerCase().includes(e.target.value.toLowerCase())
+          jugador.nombre.toLowerCase().includes(e.target.value.toLowerCase()) ||
+          jugador.apellido.toLowerCase().includes(e.target.value.toLowerCase())
         ) {
           searchData.push(jugador);
         }
@@ -260,20 +316,28 @@ function JugadoresCRUD() {
       <Container>
         <h2>Jugadores</h2>
         <br />
-        <input
-          onChange={(e) => search(e)}
-          placeholder="Buscar por nombre"
-          type="text"
-        />
-        <Button
-          ms="auto"
-          color="success"
-          onClick={() => mostrarModalInsertar()}
-        >
-          Crear
-        </Button>
-        <br />
-        <br />
+        <div className="d-flex align-items-center justify-content-between mb-2 pe-2">
+          <input
+            onChange={(e) => search(e)}
+            className='form-control w-75 me-1'
+            placeholder="Buscar por nombre"
+            type="text"
+          />
+          <Button
+            ms="auto"
+            color="success"
+            onClick={() => mostrarModalInsertar()}
+          >
+            Crear
+          </Button>
+          <Button
+            ms="auto"
+            color="success"
+            onClick={() => mostrarModalCargar()}
+          >
+            Cargar planilla
+          </Button>
+        </div>
         <Table>
           <thead>
             <tr>
@@ -297,13 +361,13 @@ function JugadoresCRUD() {
                 <td>{jugador.nombre}</td>
                 <td>{jugador.apellido}</td>
                 <td>{jugador.dni}</td>
-                <td>{jugador.nacimiento}</td>
+                <td>{`${new Date(jugador.nacimiento).getDate()}-${new Date(jugador.nacimiento).getMonth() + 1}-${new Date(jugador.nacimiento).getFullYear()}`}</td>
                 <td>{jugador.sexo}</td>
-                <td>{equipos.find((e) => e.id == jugador.equipo).nombre}</td>
+                <td>{jugador.equipo? equipos.find((e) => e.id == jugador.equipo).nombre:''}</td>
                 <td>
-                  {categorias.find((c) => c.id == jugador.categoria).nombre}
+                  {jugador.categoria? categorias.find((c) => c.id == jugador.categoria).nombre:''}
                 </td>
-                <td>{clubes.find((c) => c.id == jugador.club).nombre}</td>
+                <td>{jugador.clube? clubes.find((c) => c.id == jugador.club).nombre:''}</td>
                 <td>
                   <Button
                     color="primary"
@@ -311,7 +375,7 @@ function JugadoresCRUD() {
                   >
                     Editar
                   </Button>{" "}
-                  <Button color="danger" onClick={() => eliminar(jugador)}>
+                  <Button variant="danger" onClick={() => eliminar(jugador)}>
                     Eliminar
                   </Button>
                 </td>
@@ -447,7 +511,6 @@ function JugadoresCRUD() {
               plaintext
               readOnly
               defaultValue={modalActualizar.jugador.categoria}
-              onChange={handleChangeInsert}
               style={{
                 color: "#121212 !important",
                 border: "1px solid #ced4da !important",
@@ -658,6 +721,38 @@ function JugadoresCRUD() {
             className="btn btn-danger"
             onClick={() => cerrarModalInsertar()}
           >
+            Cancelar
+          </Button>
+        </ModalFooter>
+      </Modal>
+      
+      <Modal show={modalCargar}>
+        <ModalHeader>
+          <div>
+            <h3>Cargar datos</h3>
+          </div>
+        </ModalHeader>
+
+        <ModalBody>
+            <div className="form-group">
+              <label>Link de la planilla</label>
+              <input
+              className="form-control mb-2"
+              name="planilla"
+              type="text"
+              onChange={handleChangeCargar}
+              />
+              <button color='primary' onClick={() => handleOpenPicker()}>Subir desde Drive</button>
+            </div>
+          
+
+        </ModalBody>
+
+        <ModalFooter>
+          <Button color="primary" onClick={() => cargarPlanilla()}>
+            Cargar
+          </Button>
+          <Button color="danger" onClick={() => cerrarModalCargar()}>
             Cancelar
           </Button>
         </ModalFooter>

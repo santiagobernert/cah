@@ -1,6 +1,8 @@
 from flask import Flask, request, redirect, url_for, Blueprint, render_template, flash, jsonify
 from db.jugadores.jugadores import Jugador, nuevo_jugador
 from db import db
+from db.insertexcel import insert_from_sheet
+from datetime import datetime
 
 jugadores = Blueprint('jugadores', __name__)
 
@@ -82,3 +84,21 @@ def jugador():
             })
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response 
+
+@jugadores.route('/jugador/planilla', methods=['POST'])
+def planilla():
+    if request.method == 'POST':
+        print('post planilla')
+        Jugador.query.delete()
+        table = 'Jugadores'
+        sheetid = request.json
+        data = insert_from_sheet(sheetid, table)
+        for i in data:
+            nuevo_jugador(i['id'], i['nombre'], i['apellido'], i['dni'], datetime.strptime(i['nacimiento'], "%d/%m/%Y") , i['sexo'], i['equipo'], i['categoria'], i['club'])
+        jugadores = Jugador.query.all()
+        print([a.__asdict__() for a in jugadores])
+        response = jsonify({
+            'jugadores': [a.__asdict__() for a in jugadores],
+            })
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
