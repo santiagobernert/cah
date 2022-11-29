@@ -22,7 +22,7 @@ function AsociacionesCRUD() {
   });
   const [modalInsertar, setmodalInsertar] = useState(false);
   const [modalCargar, setmodalCargar] = useState(false);
-  const [openPicker, sheet, authResponse] = useDrivePicker()
+  const [openPicker, sheet, authResponse] = useDrivePicker();
   const [form, setform] = useState({
     id: 1,
     nombre: "",
@@ -192,7 +192,7 @@ function AsociacionesCRUD() {
       },
       body: JSON.stringify(planilla),
     })
-      .then((response) => response.json())
+      .then((response) => response.json()).then(responseJson => setdata(responseJson))
       .catch((error) => console.log("post", error));
 
   }

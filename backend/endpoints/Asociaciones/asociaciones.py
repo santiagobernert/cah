@@ -89,7 +89,9 @@ def planilla():
         Asociacion.query.delete()
         table = 'Asociaciones'
         sheetid = request.json
-        insert_from_sheet(sheetid, table)
+        data = insert_from_sheet(sheetid, table)
+        for i in data:
+            nueva_asociacion(i['id'], i['nombre'], i['abreviatura'], i['provincia'])
         asociaciones = Asociacion.query.all()
         print([a.__asdict__() for a in asociaciones])
         response = jsonify({
