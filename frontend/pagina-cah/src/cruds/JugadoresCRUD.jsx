@@ -11,6 +11,8 @@ import {
   FormGroup,
   ModalFooter,
   Form,
+  Row,
+  Col
 } from "react-bootstrap";
 
 function JugadoresCRUD() {
@@ -24,6 +26,10 @@ function JugadoresCRUD() {
   });
   const [modalInsertar, setmodalInsertar] = useState(false);
   const [modalCargar, setmodalCargar] = useState(false);
+  const [modalJugador, setmodalJugador] = useState({
+    abierto: false,
+    jugador: data.jugadores.length,
+  });
   const [openPicker, sheet, authResponse] = useDrivePicker();
   const [form, setform] = useState({
     id: 1,
@@ -44,7 +50,7 @@ function JugadoresCRUD() {
     nacimiento: useRef(""),
     sexo: useRef(""),
     equipo: useRef(0),
-    categoria: useRef(0),
+    categoria: useRef("0"),
     club: useRef(0),
   });
   const [planilla, setplanilla] = useState('');
@@ -86,6 +92,9 @@ function JugadoresCRUD() {
     fetch("http://localhost:8000/jugador")
       .then((res) => res.json())
       .then((responseJson) => {
+        responseJson.jugadores.forEach((j)=>{
+          j.nacimiento = `${new Date(j.nacimiento).getFullYear()}-${new Date(j.nacimiento).getMonth() < 10? '0' + (new Date(j.nacimiento).getMonth() + 1): new Date(j.nacimiento).getMonth() + 1}-${new Date(j.nacimiento).getDate() + 1}`
+        })
         setdata(responseJson);
         return responseJson;
       });
@@ -142,9 +151,7 @@ function JugadoresCRUD() {
       equipo: jugador.equipo,
       categoria: jugador.categoria,
       club: jugador.club,
-    });
-    console.log(jugador);
-    console.log(form);
+    })
     setmodalActualizar({ abierto: true, jugador: jugador });
   };
 
@@ -171,6 +178,19 @@ function JugadoresCRUD() {
 
   const cerrarModalCargar = () => {
     setmodalCargar(false);
+  };
+
+  const mostrarModalJugador = (jugador) => {
+    console.log("mostrar Jugador");
+    setmodalJugador({ abierto: true, jugador: jugador });
+  };
+
+  const cerrarModalJugador = () => {
+    console.log("cerrar Jugador");
+    setmodalJugador({
+      abierto: false,
+      jugador: modalActualizar.jugador,
+    });
   };
 
   const editar = (dato) => {
@@ -250,16 +270,15 @@ function JugadoresCRUD() {
   }
 
   const handleChangeEdit = (e) => {
+    console.log("ref cat",ref.current["categoria"].current.value);
+    console.log(new Date(ref.current["nacimiento"].current.value).getFullYear());
     setform({
-      id: ref.current["id"].current.value,
-      nombre: ref.current["nombre"].current.value,
-      apellido: ref.current["apellido"].current.value,
-      dni: ref.current["dni"].current.value,
-      nacimiento: ref.current["nacimiento"].current.value,
-      sexo: ref.current["sexo"].current.value,
-      equipo: ref.current["equipo"].current.value,
-      categoria: ref.current["categoria"].current.value,
-      club: ref.current["club"].current.value,
+      ...form,
+      [e.target.name]: e.target.value,
+      categoria: ref.current["nacimiento"].current.value? categorias.find((c) =>
+      c.años.includes(new Date(ref.current["nacimiento"].current.value).getFullYear())
+    ).nombre
+  : "",
     });
   };
 
@@ -267,11 +286,10 @@ function JugadoresCRUD() {
     setform({
       ...form,
       [e.target.name]: e.target.value,
-      categoria: ref.current["categoria"].current.value
-        ? categorias.find(
-            (c) => c.nombre === ref.current["categoria"].current.value
-          ).id
-        : "",
+      categoria: form.nacimiento? categorias.find((c) =>
+          c.años.includes(new Date(form.nacimiento).getFullYear())
+        ).nombre
+      : "",
     });
     console.log(form);
   };
@@ -356,18 +374,18 @@ function JugadoresCRUD() {
 
           <tbody>
             {data.jugadores.map((jugador) => (
-              <tr key={jugador.id}>
+              <tr onClick={()=>mostrarModalJugador(jugador)} key={jugador.id}>
                 <td>{jugador.id}</td>
                 <td>{jugador.nombre}</td>
                 <td>{jugador.apellido}</td>
                 <td>{jugador.dni}</td>
-                <td>{`${new Date(jugador.nacimiento).getDate()}-${new Date(jugador.nacimiento).getMonth() + 1}-${new Date(jugador.nacimiento).getFullYear()}`}</td>
+                <td>{jugador.nacimiento}</td>
                 <td>{jugador.sexo}</td>
                 <td>{jugador.equipo? equipos.find((e) => e.id == jugador.equipo).nombre:''}</td>
                 <td>
-                  {jugador.categoria? categorias.find((c) => c.id == jugador.categoria).nombre:''}
+                  {jugador.categoria}
                 </td>
-                <td>{jugador.clube? clubes.find((c) => c.id == jugador.club).nombre:''}</td>
+                <td>{jugador.club}</td>
                 <td>
                   <Button
                     color="primary"
@@ -462,8 +480,8 @@ function JugadoresCRUD() {
               onChange={handleChangeEdit}
             >
               <option value="seleccionar">Seleccionar</option>
-              <option value="masculino">Masculino</option>
-              <option value="femenino">Femenino</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
             </select>
           </FormGroup>
 
@@ -510,11 +528,12 @@ function JugadoresCRUD() {
               name="categoria"
               plaintext
               readOnly
-              defaultValue={modalActualizar.jugador.categoria}
-              style={{
-                color: "#121212 !important",
-                border: "1px solid #ced4da !important",
-              }}
+              defaultValue={form.nacimiento
+                ? categorias.find((c) =>
+                    c.años.includes(new Date(form.nacimiento).getFullYear())
+                  ).nombre
+                : modalActualizar.jugador.categoria}
+              ref={ref.current.categoria}
               placeholder={
                 form.nacimiento
                   ? categorias.find((c) =>
@@ -552,7 +571,7 @@ function JugadoresCRUD() {
                 return (
                   <option
                     key={club.id}
-                    value={club.id}
+                    value={club.nombre}
                     className="dropdown-item"
                   >
                     {club.nombre}
@@ -757,6 +776,35 @@ function JugadoresCRUD() {
           </Button>
         </ModalFooter>
       </Modal>
+
+      <Modal dialogClassName="w-75 mw-80" show={modalJugador.abierto}>
+        <ModalHeader>
+          <div><h3>{`${modalJugador.jugador.nombre} ${modalJugador.jugador.apellido}`}</h3></div>
+          </ModalHeader>
+          <ModalBody>
+            <Row>
+              <Col>
+                <div className="container">
+                  <label>Fecha de nacimiento:</label>
+                  <p className="bold">{modalJugador.jugador.nacimiento}</p>
+                </div>
+              </Col>
+              <Col>
+                <div className="container">
+                  <label>Categoría:</label>
+                  <p className="bold">{modalJugador.jugador.categoria}</p>
+                </div>
+              </Col>
+              <Col>
+                <div className="container">
+                  <label>Club:</label>
+                  <p className="bold">{modalJugador.jugador.club}</p>
+                </div>
+              </Col>
+            </Row>
+          </ModalBody>
+      </Modal>
+
     </>
   );
 }
