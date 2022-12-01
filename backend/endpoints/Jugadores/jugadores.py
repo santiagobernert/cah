@@ -27,13 +27,26 @@ def jugador():
         equipo = request.json['equipo']
         categoria = request.json['categoria']
         club = request.json['club']
+        estado = request.json['estado']
+        peso = request.json['peso']
+        estatura = request.json['estatura']
+        mano = request.json['mano']
+        posicion = request.json['posicion']
+        sanguineo = request.json['sanguineo']
+        telefono = request.json['telefono']
+        provincia = request.json['provincia']
+        departamento = request.json['departamento']
+        localidad = request.json['localidad']
+        domicilio = request.json['domicilio']
+        obrasocial = request.json['obrasocial']
+        carnet = request.json['carnet']
 
         dni_existe = Jugador.query.filter_by(dni=dni).first()
         
         if dni_existe:
             print('jugador ya existe')
         else:
-            nuevo_jugador(id, nombre, apellido, dni, nacimiento, sexo, equipo, categoria, club)
+            nuevo_jugador(id, nombre, apellido, dni, nacimiento, sexo, equipo, categoria, club, estado, peso, estatura, mano, posicion, sanguineo, telefono, provincia, departamento, localidad, domicilio, obrasocial, carnet)
             print(f'jugador {nombre} {apellido}, creado')
             jugadores = Jugador.query.all()
             response = jsonify({
@@ -59,6 +72,19 @@ def jugador():
         jugador.equipo = valores['equipo']
         jugador.categoria = valores['categoria']
         jugador.club = valores['club']
+        jugador.estado = valores['estado']
+        jugador.peso = valores['peso']
+        jugador.estatura = valores['estatura']
+        jugador.mano = valores['mano']
+        jugador.posicion = valores['posicion']
+        jugador.sanguineo = valores['sanguineo']
+        jugador.telefono = valores['telefono']
+        jugador.provincia = valores['provincia']
+        jugador.departamento = valores['departamento']
+        jugador.localidad = valores['localidad']
+        jugador.domicilio = valores['domicilio']
+        jugador.obrasocial = valores['obrasocial']
+        jugador.carnet = valores['carnet']
         db.session.commit()
         print('jugador ', id, ' editado')
         jugadores = Jugador.query.all()
@@ -94,7 +120,7 @@ def planilla():
         sheetid = request.json
         data = insert_from_sheet(sheetid, table)
         for i in data:
-            nuevo_jugador(i['id'], i['nombre'], i['apellido'], i['dni'], datetime.strptime(i['nacimiento'], "%d/%m/%Y") , i['sexo'], i['equipo'], i['categoria'], i['club'])
+            nuevo_jugador(i['id'], i['nombre'], i['apellido'], i['dni'], datetime.strptime(i['nacimiento'], "%d/%m/%Y") , i['sexo'], i['equipo'], i['categoria'], i['club'], i['estado'], i['peso'], i['estatura'], i['mano'], i['posicion'], i['sanguineo'], i['telefono'], i['provincia'], i['departamento'], i['localidad'], i['domicilio'], i['obrasocial'], i['carnet'])
         jugadores = Jugador.query.all()
         print([a.__asdict__() for a in jugadores])
         response = jsonify({

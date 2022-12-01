@@ -777,30 +777,22 @@ function JugadoresCRUD() {
         </ModalFooter>
       </Modal>
 
-      <Modal dialogClassName="w-75 mw-80" show={modalJugador.abierto}>
-        <ModalHeader>
+      <Modal onHide={() => cerrarModalJugador()} dialogClassName="w-75 mw-100" show={modalJugador.abierto}>
+        <ModalHeader closeButton>
           <div><h3>{`${modalJugador.jugador.nombre} ${modalJugador.jugador.apellido}`}</h3></div>
           </ModalHeader>
           <ModalBody>
             <Row>
-              <Col>
+            {Object.keys(modalJugador.jugador).map((k, i) => {
+              return(
+                <Col key={i}>
                 <div className="container">
-                  <label>Fecha de nacimiento:</label>
-                  <p className="bold">{modalJugador.jugador.nacimiento}</p>
+                  <label>{`${k}:`}</label>
+                  <p>{modalJugador.jugador[k]}</p>
                 </div>
               </Col>
-              <Col>
-                <div className="container">
-                  <label>Categoría:</label>
-                  <p className="bold">{modalJugador.jugador.categoria}</p>
-                </div>
-              </Col>
-              <Col>
-                <div className="container">
-                  <label>Club:</label>
-                  <p className="bold">{modalJugador.jugador.club}</p>
-                </div>
-              </Col>
+              )
+            })}
             </Row>
           </ModalBody>
       </Modal>
