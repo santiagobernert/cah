@@ -4,7 +4,47 @@ from db import db
 from db.insertexcel import insert_from_sheet
 from datetime import datetime
 
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+import pandas as pd, numpy as np
+
+def writesheet(data):
+    #Falta: data tiene que ser un array de arrays con todos los datos de los jugadores que llegan en el PUT
+    SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+    SERVICE_ACCOUNT_FILE = 'E:/Programacion/javascript/React/ArchivosAmebal-CAH/keys.json'
+
+    credentials = service_account.Credentials.from_service_account_file(
+            SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+
+    # The ID and range of a sample spreadsheet.
+    SPREADSHEET_ID = '1FO6iagLgh4y8iDoteSxOcI_xOogqaOPGJCcG7A4ujCE'
+    RANGE_NAME = 'jugadores!A1:V'
+
+    service = build('sheets', 'v4', credentials=credentials)
+
+    # Call the Sheets API
+    sheet = service.spreadsheets()
+    result = sheet.values().get(spreadsheetId=SPREADSHEET_ID,
+                                range=RANGE_NAME).execute()
+
+    values = result.get('values', [])
+    print('\n\n VALUES \n')
+    print(values)
+
+    request = sheet.values().update(spreadsheetId=SPREADSHEET_ID, range=RANGE_NAME, valueInputOption='USER_ENTERED', body={"range": RANGE_NAME, "values": data}).execute()
+
+    print(values)
+    print(data)
+    print(request)
+
+    return values
+
+
+
 jugadores = Blueprint('jugadores', __name__)
+
+
+
 
 @jugadores.route('/jugador', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def jugador():
@@ -93,6 +133,9 @@ def jugador():
             'jugadores': [j.__asdict__() for j in jugadores],
             })
         response.headers.add('Access-Control-Allow-Origin', '*')
+
+        writesheet(cols=list(valores.keys()))
+
         return response
 
     if request.method == 'DELETE':
