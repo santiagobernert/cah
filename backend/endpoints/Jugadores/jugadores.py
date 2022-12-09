@@ -8,7 +8,7 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 import pandas as pd, numpy as np
 
-def writesheet(data):
+def writesheet(data, rango='jugadores!A1:V'):
     #Falta: data tiene que ser un array de arrays con todos los datos de los jugadores que llegan en el PUT
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
     SERVICE_ACCOUNT_FILE = 'E:/Programacion/javascript/React/ArchivosAmebal-CAH/keys.json'
@@ -31,10 +31,10 @@ def writesheet(data):
     print('\n\n VALUES \n')
     print(values)
 
-    request = sheet.values().update(spreadsheetId=SPREADSHEET_ID, range=RANGE_NAME, valueInputOption='USER_ENTERED', body={"range": RANGE_NAME, "values": data}).execute()
-
-    print(values)
+    print('\n\n Data \n')
     print(data)
+
+    request = sheet.values().update(spreadsheetId=SPREADSHEET_ID, range=rango, valueInputOption='USER_ENTERED', body={"values": data}).execute()
     print(request)
 
     return values
@@ -93,6 +93,9 @@ def jugador():
                 'jugadores': [j.__asdict__() for j in jugadores],
                 })
             response.headers.add('Access-Control-Allow-Origin', '*')
+            
+            writesheet([[v for v in request.json.values()]], f'jugadores!A{id+1}:V{id+1}')
+
             return response
 
     
@@ -134,7 +137,7 @@ def jugador():
             })
         response.headers.add('Access-Control-Allow-Origin', '*')
 
-        writesheet(cols=list(valores.keys()))
+        writesheet([[v for v in valores.values()]], f'jugadores!A{jugador.id+1}:V{jugador.id+1}')
 
         return response
 

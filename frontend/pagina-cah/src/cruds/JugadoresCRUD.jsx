@@ -12,7 +12,8 @@ import {
   ModalFooter,
   Form,
   Row,
-  Col
+  Col,
+  Dropdown
 } from "react-bootstrap";
 
 function JugadoresCRUD() {
@@ -350,13 +351,17 @@ function JugadoresCRUD() {
     })
   }
 
-  const search = (e) => {
+  const search = (e, col) => {
     let searchData = [];
     if (e.target.value !== "") {
       data.jugadores.map((jugador) => {
         if (
-          jugador.nombre.toLowerCase().includes(e.target.value.toLowerCase()) ||
-          jugador.apellido.toLowerCase().includes(e.target.value.toLowerCase())
+            col=="nombre"?
+            jugador.nombre.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            jugador.apellido.toLowerCase().includes(e.target.value.toLowerCase()):
+            col=="dni"?
+            jugador.dni.toString().includes(e.target.value.toLowerCase()):
+            jugador[col].toLowerCase().includes(e.target.value.toLowerCase())
         ) {
           searchData.push(jugador);
         }
@@ -375,7 +380,7 @@ function JugadoresCRUD() {
         <br />
         <div className="d-flex align-items-center justify-content-between mb-2 pe-2">
           <input
-            onChange={(e) => search(e)}
+            onChange={(e) => search(e, 'nombre')}
             className='form-control w-75 me-1'
             placeholder="Buscar por nombre"
             type="text"
@@ -394,6 +399,44 @@ function JugadoresCRUD() {
           >
             Cargar planilla
           </Button>
+        </div>
+        <div className="d-flex align-items-center justify-content-between mb-2 pe-2">
+          <input
+            onChange={(e) => search(e, 'dni')}
+            className='form-control w-25 me-1'
+            placeholder="Buscar por dni"
+            type="text"
+          />
+          <input
+            onChange={(e) => search(e, 'club')}
+            className='form-control w-50 me-1'
+            placeholder="Buscar por club"
+            type="text"
+          />
+          <Dropdown className="d-inline mx-2">
+            <Dropdown.Toggle id="dropdown-autoclose-true-año">
+              Año
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#">Menu Item</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <Dropdown className="d-inline mx-2">
+            <Dropdown.Toggle id="dropdown-autoclose-true-categoria">
+              Categoría
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+            {categorias.map((categoria) => {
+                return (
+                  <Dropdown.Item value={categoria.id} key={categoria.id}>
+                    {categoria.nombre}
+                  </Dropdown.Item>
+                );
+              })}
+              <Dropdown.Item href="#">Menu Item</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
         <Table>
           <thead>
@@ -762,7 +805,7 @@ function JugadoresCRUD() {
             >
               {clubes.map((club) => {
                 return (
-                  <option value={club.id} key={club.id}>
+                  <option value={club.nombre} key={club.id}>
                     {club.nombre}
                   </option>
                 );
