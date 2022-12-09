@@ -4,7 +4,13 @@ from db.usuarios.usuarios import Usuario, nuevo_usuario
 from db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
+
 login = Blueprint('login', __name__)
+jwt = JWTManager(login)
+
+
+
 
 @login.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -52,9 +58,8 @@ def log_in():
             if usuario.contraseña == contraseña:
                 print('Logged in successfully!')
                 print(f'Usuario {usuario.nombre} {usuario.apellido} {dni}, logueado')
-                response = jsonify({
-                'usuario': usuario.__asdict__(),
-                })
+                token = create_access_token(identity=dni)
+                response = jsonify(access_token=token, usuario=usuario.__asdict__())
                 response.headers.add('Access-Control-Allow-Origin', '*')
                 return response
             else:
@@ -155,3 +160,8 @@ def usuario():
             })
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
+
+
+@login.route('/crear', methods=['GET'])
+def crear_usuarios():
+    return

@@ -44,7 +44,7 @@ function UsuariosCRUD() {
   }, []);
 
   const getRoles = () => {
-    fetch("http://localhost:5000/roles")
+    fetch("http://localhost:8000/roles")
       .then((res) => res.json())
       .then((responseJson) => {
         setRoles(responseJson);
@@ -53,7 +53,7 @@ function UsuariosCRUD() {
   };
 
   const getData = () => {
-    fetch("http://localhost:5000/usuario")
+    fetch("http://localhost:8000/usuario")
       .then((res) => res.json())
       .then((responseJson) => {
         setdata(responseJson);
@@ -62,7 +62,7 @@ function UsuariosCRUD() {
   };
 
   const postData = () => {
-    fetch("http://localhost:5000/usuario", {
+    fetch("http://localhost:8000/usuario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +75,7 @@ function UsuariosCRUD() {
   };
 
   const putData = () => {
-    fetch("http://localhost:5000/usuario", {
+    fetch("http://localhost:8000/usuario", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +88,7 @@ function UsuariosCRUD() {
   };
 
   const deleteData = (id) => {
-    fetch("http://localhost:5000/usuario", {
+    fetch("http://localhost:8000/usuario", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -222,10 +222,13 @@ function UsuariosCRUD() {
       <Container>
         <h2>Usuarios</h2>
         <br />
-        <input onChange={(e) => search(e)} placeholder="Buscar por nombre" type="text" />
-        <Button ms="auto" color="success" onClick={() => mostrarModalInsertar()}>
-          Crear
-        </Button>
+        <div className="d-flex align-items-center justify-content-between mb-2 pe-2">
+          <input className="form-control w-75 me-1" onChange={(e) => search(e)} placeholder="Buscar por nombre" type="text" />
+          <Button ms="auto" color="success" onClick={() => mostrarModalInsertar()}>
+            Crear
+          </Button>
+        </div>
+        
         <br />
         <br />
         <Table>
