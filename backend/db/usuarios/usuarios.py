@@ -1,5 +1,4 @@
 from db import db
-from db.roles.roles import Rol
 from flask_login import UserMixin
 
 class Usuario(db.Model, UserMixin):
@@ -30,17 +29,3 @@ def nuevo_usuario(id, nombre, apellido, dni, email, contraseña, rol):
     db.session.add(usuario)
     db.session.commit()
     return usuario
-
-'''
-    try:
-        with connect(
-            host="localhost",
-            user=input("Enter username: "),
-            password=input("Enter password: "),
-        ) as connection:
-            with connection.cursor() as cursor:
-                cursor.execute(create_usuarios_table_query)
-                connection.commit()
-    except Error as e:
-        print(e)'''
-

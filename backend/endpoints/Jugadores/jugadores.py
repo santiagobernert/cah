@@ -6,10 +6,8 @@ from datetime import datetime
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
-import pandas as pd, numpy as np
 
 def writesheet(data, rango='jugadores!A1:V'):
-    #Falta: data tiene que ser un array de arrays con todos los datos de los jugadores que llegan en el PUT
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
     SERVICE_ACCOUNT_FILE = 'E:/Programacion/javascript/React/ArchivosAmebal-CAH/keys.json'
 
