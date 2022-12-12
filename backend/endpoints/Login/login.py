@@ -3,11 +3,10 @@ from flask_login import login_user, login_required, logout_user, current_user
 from db.usuarios.usuarios import Usuario, nuevo_usuario
 from db import db
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from db.usuarios.insert import insertvalues
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
 
 login = Blueprint('login', __name__)
-jwt = JWTManager(login)
 
 
 
@@ -47,15 +46,14 @@ def signup():
 
     return render_template('index.html', pagina='signup', error='no se encontro usuario', usuario='')
 
-@login.route('/login', methods=['GET'])
+@login.route('/login', methods=['POST'])
 def log_in():
-    if request.method == 'GET':
-        dni = request.args['dni']
-        contraseña = request.args['password']
+    if request.method == 'POST':
+        dni = request.json['dni']
+        contraseña = request.json['contraseña']
         usuario = Usuario.query.filter_by(dni=dni).first()
         if usuario:
-            #if check_password_hash(usuario.contraseña, contraseña):
-            if usuario.contraseña == contraseña:
+            if check_password_hash(usuario.contraseña, contraseña):
                 print('Logged in successfully!')
                 print(f'Usuario {usuario.nombre} {usuario.apellido} {dni}, logueado')
                 token = create_access_token(identity=dni)
@@ -164,4 +162,6 @@ def usuario():
 
 @login.route('/crear', methods=['GET'])
 def crear_usuarios():
-    return
+    if request.method == 'GET':
+        values = insertvalues()
+        return values

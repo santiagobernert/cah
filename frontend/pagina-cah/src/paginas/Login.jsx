@@ -6,6 +6,7 @@ import logo from "/src/assets/logo.png";
 
 
 export default function Login() {
+  const token = sessionStorage.getItem("token")
   const [errorDni, setErrorDni] = useState('');
   const [errorContraseña, setErrorContraseña] = useState('');
   const [form, setForm] = useState({
@@ -15,12 +16,20 @@ export default function Login() {
 
   const checkUser = () => {
     console.log(form);
-    fetch(`http://localhost:5000/login?dni=${form.dni}&password=${form.contraseña}`)
+    fetch("http://localhost:8000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(form),
+    })
       .then((response) => {
         if (response.ok){
           console.log('no hay error');
+          sessionStorage.setItem('token', response.access_token)
           response.json();
-          console.log(response)
+          console.log(response);
         }
         else {
           console.log("post error", response);
@@ -43,7 +52,9 @@ export default function Login() {
     <div>
         <div className={styles.blob}></div>
         <div className="pt-5">
-            <Container className={styles.login}>
+          {token && token != ""?
+            console.log('tas logueado capo'): (
+              <Container className={styles.login}>
                 <img src={logo} />
                 <h4>Login</h4>
                 <Form>
@@ -57,6 +68,9 @@ export default function Login() {
                     <Button variant="primary" onClick={() => checkUser()}>Ingresar</Button>
                 </Form>
             </Container>
+            )
+          }
+            
         </div>
         
     </div>
