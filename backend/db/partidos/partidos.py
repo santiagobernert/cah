@@ -6,17 +6,20 @@ class Partido(db.Model):
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=False)
     titulo = db.Column(db.String(30))
     torneo = db.Column(db.Integer)
-    categoria = db.Column(db.Integer, db.ForeignKey(Categoria.id))
-    equipos = db.Column(db.String(6))
-    arbitros = db.Column(db.String(6))
-    mesas = db.Column(db.String(6))
-    sede = db.Column(db.String(50))
+    categoria = db.Column(db.Integer)
+    equipoA = db.Column(db.String(60))
+    equipoB = db.Column(db.String(60))
+    sede = db.Column(db.String(60))
     fecha = db.Column(db.String(50))
     jornada = db.Column(db.String(50))
-    resultado = db.Column(db.String(150))
+    resultado = db.Column(db.String(50))
+    arbitro1 = db.Column(db.String(50))
+    arbitro2 = db.Column(db.String(50))
+    mesa1 = db.Column(db.String(50))
+    mesa2 = db.Column(db.String(50))
 
 
-    def __init__(self, id, titulo, torneo, categoria, equipoA, equipoB, sede, fecha, jornada, resultado):
+    def __init__(self, id, titulo, torneo, categoria, equipoA, equipoB, sede, fecha, jornada, resultado, arbitro1, arbitro2, mesa1, mesa2):
         self.id = id
         self.titulo = titulo
         self.torneo = torneo
@@ -27,15 +30,19 @@ class Partido(db.Model):
         self.fecha = fecha
         self.jornada = jornada
         self.resultado = resultado
+        self.arbitro1 = arbitro1
+        self.arbitro2 = arbitro2
+        self.mesa1 = mesa1
+        self.mesa2 = mesa2
     
     def __asdict__(self):
-        return {'id':self.id,'titulo': self.titulo,'torneo': self.torneo,'categoria': self.categoria,'equipoA': self.equipoA,'equipoB': self.equipoB,'sede': self.sede,'fecha': self.fecha,'jornada': self.jornada,'resultado': self.resultado}
+        return {'id':self.id,'titulo': self.titulo,'torneo': self.torneo,'categoria': self.categoria,'equipoA': self.equipoA,'equipoB': self.equipoB,'sede': self.sede,'fecha': self.fecha,'jornada': self.jornada,'resultado': self.resultado, 'arbitro1': self.arbitro1, 'arbitro2': self.arbitro2, 'mesa1': self.mesa1, 'mesa2': self.mesa2}
 
     def string_club_categoria(self):
         return f' {self.club} {self.categoria} '
 
-def nuevo_partido(id, titulo, torneo, categoria, equipoA, equipoB, sede, fecha, jornada, resultado):
-    partido = Partido(id, titulo, torneo, categoria, equipoA, equipoB, sede, fecha, jornada, resultado)
+def nuevo_partido(id, titulo, torneo, categoria, equipoA, equipoB, sede, fecha, jornada, resultado, arbitro1, arbitro2, mesa1, mesa2):
+    partido = Partido(id, titulo, torneo, categoria, equipoA, equipoB, sede, fecha, jornada, resultado, arbitro1, arbitro2, mesa1, mesa2)
     db.session.add(partido)
     db.session.commit()
     return partido

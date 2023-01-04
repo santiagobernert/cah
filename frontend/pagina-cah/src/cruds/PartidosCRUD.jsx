@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "../styles/cruds/Cruds.module.css";
 import {
   Table,
   Button,
@@ -14,14 +15,12 @@ import {
 
 function PartidosCRUD() {
   const [partidos, setPartidos] = useState([]);
-  const [data, setData] = useState({
-    categorias: [],
-    torneos: [],
-    equipos: [],
-    arbitros: [],
-    mesas: [],
-    sedes: [],
-  });
+  const [categorias, setCategorias] = useState([]);
+  const [torneos, setTorneos] = useState([]);
+  const [equipos, setEquipos] = useState([]);
+  const [arbitros, setArbitros] = useState([]);
+  const [mesas, setMesas] = useState([]);
+  const [sedes, setSedes] = useState([]);
   const [modalActualizar, setmodalActualizar] = useState({
     abierto: false,
     partido: partidos.length,
@@ -65,43 +64,66 @@ function PartidosCRUD() {
   }, []);
 
   const getPartidos = () => {
-    fetch("http://localhost:5000/partidos")
+    fetch("http://localhost:8000/partidos")
       .then((res) => res.json())
       .then((responseJson) => {
-        setData(responseJson);
+        setPartidos(responseJson.partidos);
         return responseJson;
       });
   };
 
-  const getData = () => {
-    let categorias = fetch("http://localhost:5000/categorias").then((res) =>
+  const getData =  () => {
+    fetch("http://localhost:8000/categoria").then((res) =>
       res.json()
-    );
-    let torneos = fetch("http://localhost:5000/jugadores").then((res) =>
+    ).then(resjson => {
+      console.log(resjson.categorias);
+      setCategorias(resjson.categorias);
+      return resjson;
+    }).then(j => console.log('sdddff', categorias))
+    
+    fetch("http://localhost:8000/torneo").then((res) =>
       res.json()
-    );
-    let equipos = fetch("http://localhost:5000/equipos").then((res) =>
+    ).then(resjson => {
+      console.log(resjson.torneos);
+      setTorneos(resjson.torneos);
+      return resjson;
+    }).then(j => console.log('sdddff', torneos))
+    
+    fetch("http://localhost:8000/equipo").then((res) =>
       res.json()
-    );
-    let arbitros = fetch("http://localhost:5000/arbitro").then((res) =>
+    ).then(resjson => {
+      console.log(resjson.equipos);
+      setEquipos(resjson.equipos);
+      return resjson;
+    }).then(j => console.log('sdddff', equipos))
+    
+    fetch("http://localhost:8000/arbitro").then((res) =>
       res.json()
-    );
-    let mesas = fetch("http://localhost:5000/mesa").then((res) => res.json());
-    let sedes = fetch("http://localhost:5000/sede").then((res) => res.json());
+    ).then(resjson => {
+      console.log(resjson.arbitros);
+      setArbitros(resjson.arbitros);
+      return resjson;
+    }).then(j => console.log('sdddff', arbitros))
 
-    setData({
-      categorias: categorias,
-      torneos: torneos,
-      equipos: equipos,
-      arbitros: arbitros,
-      mesas: mesas,
-      sedes: sedes,
-    });
-    console.log(data);
+    fetch("http://localhost:8000/mesa").then((res) =>
+      res.json()
+    ).then(resjson => {
+      console.log(resjson.mesas);
+      setMesas(resjson.mesas);
+      return resjson;
+    }).then(j => console.log('sdddff', mesas))
+
+    fetch("http://localhost:8000/sede").then((res) =>
+      res.json()
+    ).then(resjson => {
+      console.log(resjson.sedes);
+      setSedes(resjson.sedes);
+      return resjson;
+    }).then(j => console.log('sdddff', sedes))
   };
 
   const postData = () => {
-    fetch("http://localhost:5000/partido", {
+    fetch("http://localhost:8000/partido", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -114,7 +136,7 @@ function PartidosCRUD() {
   };
 
   const putData = () => {
-    fetch("http://localhost:5000/partido", {
+    fetch("http://localhost:8000/partido", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -127,7 +149,7 @@ function PartidosCRUD() {
   };
 
   const deleteData = (id) => {
-    fetch("http://localhost:5000/partido", {
+    fetch("http://localhost:8000/partido", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -278,11 +300,19 @@ function PartidosCRUD() {
       <Container>
         <h2>Partidos</h2>
         <br />
-        <input
+        <div className="d-flex justify-content-between mb-2 pe-4">
+          <input
           onChange={(e) => search(e)}
           placeholder="Buscar por nombre"
+          className="form-control w-75 me-0"
           type="text"
         />
+        <input
+            onChange={(e) => search(e, 'club')}
+            className='form-control w-50 me-1'
+            placeholder="Buscar por club"
+            type="text"
+          />
         <Button
           ms="auto"
           color="success"
@@ -290,8 +320,7 @@ function PartidosCRUD() {
         >
           Crear
         </Button>
-        <br />
-        <br />
+        </div>
         <Table>
           <thead>
             <tr>
@@ -388,7 +417,7 @@ function PartidosCRUD() {
             ></input>
             <datalist id="clubes_list">
               <option>Seleccionar</option>
-              {data.equipos.map((equipo) => {
+              {equipos.map((equipo) => {
                 return (
                   <option
                     key={equipo.id}
@@ -425,7 +454,7 @@ function PartidosCRUD() {
             ></input>
             <datalist id="clubes_list">
               <option>Seleccionar</option>
-              {data.equipos.map((equipo) => {
+              {equipos.map((equipo) => {
                 return (
                   <option
                     key={equipo.id}
@@ -462,7 +491,7 @@ function PartidosCRUD() {
             ></input>
             <datalist id="arbitros_list">
               <option>Seleccionar</option>
-              {data.arbitros.map((arbitro) => {
+              {arbitros.map((arbitro) => {
                 return (
                   <option
                     key={arbitro.id}
@@ -499,7 +528,7 @@ function PartidosCRUD() {
             ></input>
             <datalist id="arbitros_list">
               <option>Seleccionar</option>
-              {data.arbitros.map((arbitro) => {
+              {arbitros.map((arbitro) => {
                 return (
                   <option
                     key={arbitro.id}
@@ -536,7 +565,7 @@ function PartidosCRUD() {
             ></input>
             <datalist id="mesas_list">
               <option>Seleccionar</option>
-              {data.mesas.map((mesa) => {
+              {mesas.map((mesa) => {
                 return (
                   <option
                     key={mesa.id}
@@ -573,7 +602,7 @@ function PartidosCRUD() {
             ></input>
             <datalist id="mesas_list">
               <option>Seleccionar</option>
-              {data.mesas.map((mesa) => {
+              {mesas.map((mesa) => {
                 return (
                   <option
                     key={mesa.id}
@@ -610,7 +639,7 @@ function PartidosCRUD() {
             ></input>
             <datalist id="sedes_list">
               <option>Seleccionar</option>
-              {data.sedes.map((sede) => {
+              {sedes.map((sede) => {
                 return (
                   <option
                     key={sede.id}
