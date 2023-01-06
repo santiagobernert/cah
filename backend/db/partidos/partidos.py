@@ -5,18 +5,18 @@ class Partido(db.Model):
     __tablename__ = 'Partidos'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=False)
     titulo = db.Column(db.String(30))
-    torneo = db.Column(db.Integer)
-    categoria = db.Column(db.Integer)
-    equipoA = db.Column(db.String(60))
-    equipoB = db.Column(db.String(60))
+    torneo = db.Column(db.String(30))
+    categoria = db.Column(db.String(30))
+    equipoA = db.Column(db.Integer)
+    equipoB = db.Column(db.Integer)
     sede = db.Column(db.String(60))
     fecha = db.Column(db.String(50))
     jornada = db.Column(db.String(50))
     resultado = db.Column(db.String(50))
-    arbitro1 = db.Column(db.String(50))
-    arbitro2 = db.Column(db.String(50))
-    mesa1 = db.Column(db.String(50))
-    mesa2 = db.Column(db.String(50))
+    arbitro1 = db.Column(db.Integer)
+    arbitro2 = db.Column(db.Integer)
+    mesa1 = db.Column(db.Integer)
+    mesa2 = db.Column(db.Integer)
 
 
     def __init__(self, id, titulo, torneo, categoria, equipoA, equipoB, sede, fecha, jornada, resultado, arbitro1, arbitro2, mesa1, mesa2):
