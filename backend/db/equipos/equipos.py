@@ -7,7 +7,7 @@ class Equipo(db.Model):
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=False)
     club = db.Column(db.String(100))
     categoria = db.Column(db.String(20))
-    jugadores = db.Column(db.String(40))
+    jugadores = db.Column(db.String(100))
     tecnicos = db.Column(db.String(10))
     refuerzos = db.Column(db.String(10))
     año = db.Column(db.String(4))

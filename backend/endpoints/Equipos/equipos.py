@@ -45,7 +45,7 @@ def equipo():
         id = valores['id']
         print(valores)
         equipo = Equipo.query.filter_by(id=id).first()
-        print(equipo.nombre, equipo.abreviatura, equipo.asociacion, equipo.nombrecorto)
+        print(equipo.club, equipo.categoria, equipo.año)
         equipo.club = valores['club']
         equipo.categoria = valores['categoria']
         equipo.año = valores['año']
