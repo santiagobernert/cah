@@ -42,6 +42,7 @@ function PartidosCRUD() {
     jornada: "",
     resultado: "",
   });
+  const [filter, setfilter] = useState({titulo:'', club:'', torneo:''});
   const ref = useRef({
     id: useRef(1),
     titulo: useRef(""),
@@ -76,50 +77,44 @@ function PartidosCRUD() {
     fetch("http://localhost:8000/categoria").then((res) =>
       res.json()
     ).then(resjson => {
-      console.log(resjson.categorias);
       setCategorias(resjson.categorias);
       return resjson;
-    }).then(j => console.log('sdddff', categorias))
+    })
     
     fetch("http://localhost:8000/torneo").then((res) =>
       res.json()
     ).then(resjson => {
-      console.log(resjson.torneos);
       setTorneos(resjson.torneos);
       return resjson;
-    }).then(j => console.log('sdddff', torneos))
+    })
     
     fetch("http://localhost:8000/equipo").then((res) =>
       res.json()
     ).then(resjson => {
-      console.log(resjson.equipos);
       setEquipos(resjson.equipos);
       return resjson;
-    }).then(j => console.log('sdddff', equipos))
+    })
     
     fetch("http://localhost:8000/arbitro").then((res) =>
       res.json()
     ).then(resjson => {
-      console.log(resjson.arbitros);
       setArbitros(resjson.arbitros);
       return resjson;
-    }).then(j => console.log('sdddff', arbitros))
+    })
 
     fetch("http://localhost:8000/mesa").then((res) =>
       res.json()
     ).then(resjson => {
-      console.log(resjson.mesas);
       setMesas(resjson.mesas);
       return resjson;
-    }).then(j => console.log('sdddff', mesas))
+    })
 
     fetch("http://localhost:8000/sede").then((res) =>
       res.json()
     ).then(resjson => {
-      console.log(resjson.sedes);
       setSedes(resjson.sedes);
       return resjson;
-    }).then(j => console.log('sdddff', sedes))
+    })
   };
 
   const postData = () => {
@@ -278,21 +273,28 @@ function PartidosCRUD() {
     console.log(form);
   };
 
-  const search = (e) => {
+  const search = (e, value) => {
     let searchData = [];
+    if (!filter.titulo && !filter.club && !filter.torneo){
+      searchData = getData();
+    } else {
     if (e.target.value !== "") {
+      setfilter({...filter, [value]: e.target.value})
+    }
       partidos.map((partido) => {
         if (
-          partido.nombre.toLowerCase().includes(e.target.value.toLowerCase())
+          filter.titulo?partido.titulo.toLowerCase().includes(filter.titulo.toLowerCase()):true &&
+          filter.club?partido.equipoA.toLowerCase().includes(filter.club.toLowerCase()):true ||
+          filter.club?partido.equipoB.toLowerCase().includes(filter.club.toLowerCase()):true &&
+          filter.torneo?partido.torneo.toLowerCase().includes(filter.torneo.toLowerCase()):true
         ) {
           searchData.push(partido);
         }
       });
       setPartidos(searchData);
-    } else {
-      searchData = getData();
     }
     console.log(partidos);
+    console.log(filter);
   };
 
   return (
@@ -302,7 +304,7 @@ function PartidosCRUD() {
         <br />
         <div className="d-flex justify-content-between mb-2 pe-4">
           <input
-          onChange={(e) => search(e)}
+          onChange={(e) => search(e, 'titulo')}
           placeholder="Buscar por nombre"
           className="form-control w-75 me-0"
           type="text"
@@ -311,6 +313,12 @@ function PartidosCRUD() {
             onChange={(e) => search(e, 'club')}
             className='form-control w-50 me-1'
             placeholder="Buscar por club"
+            type="text"
+          />
+        <input
+            onChange={(e) => search(e, 'torneo')}
+            className='form-control w-50 me-1'
+            placeholder="Buscar por torneo"
             type="text"
           />
         <Button
@@ -352,7 +360,7 @@ function PartidosCRUD() {
                   >
                     Editar
                   </Button>{" "}
-                  <Button color="danger" onClick={() => eliminar(partido)}>
+                  <Button variant="danger" onClick={() => eliminar(partido)}>
                     Eliminar
                   </Button>
                 </td>
