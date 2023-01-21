@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import styles from "../styles/cruds/Cruds.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Table,
@@ -13,13 +14,15 @@ import {
 } from "react-bootstrap";
 
 function TorneosCRUD() {
-  const [data, setdata] = useState({ torneos: [] });
+  const [torneos, setTorneos] = useState([]);
   const [categorias, setCategorias] = useState([]);
+  const [provincias, setProvincias] = useState([]);
+  const [provincia, setProvincia] = useState([]);
   const [localidades, setLocalidades] = useState([]);
   const [equipos, setEquipos] = useState([]);
   const [modalActualizar, setmodalActualizar] = useState({
     abierto: false,
-    torneo: data.torneos.length,
+    torneo: torneos.length,
   });
   const [modalInsertar, setmodalInsertar] = useState(false);
   const [form, setform] = useState({
@@ -42,14 +45,13 @@ function TorneosCRUD() {
   });
   useEffect(() => {
     getCategorias();
-    getLocalidades();
     getEquipos();
-    getData();
-    console.log(clubes, categorias);
+    getProvincias();
+    getTorneos();
   }, []);
 
   const getCategorias = () => {
-    fetch("http://localhost:5000/categorias")
+    fetch("http://localhost:8000/categoria")
       .then((res) => res.json())
       .then((responseJson) => {
         setCategorias(responseJson.categorias);
@@ -57,17 +59,8 @@ function TorneosCRUD() {
       });
   };
 
-  const getLocalidades = () => {
-    fetch("http://localhost:5000/localidad")
-      .then((res) => res.json())
-      .then((responseJson) => {
-        setLocalidades(responseJson.localidades);
-        return responseJson;
-      });
-  };
-
   const getEquipos = () => {
-    fetch("http://localhost:5000/equipo")
+    fetch("http://localhost:8000/equipo")
       .then((res) => res.json())
       .then((responseJson) => {
         setEquipos(responseJson.equipos);
@@ -75,17 +68,35 @@ function TorneosCRUD() {
       });
   };
 
-  const getData = () => {
-    fetch("http://localhost:5000/torneo")
+  const getProvincias = () => {
+    fetch("http://localhost:8000/provincia")
       .then((res) => res.json())
       .then((responseJson) => {
-        setdata(responseJson);
+        setProvincias(responseJson.provincias);
+        return responseJson;
+      });
+  };
+
+  const getLocalidades = (provincia) => {
+    fetch("http://localhost:8000/localidad")
+      .then((res) => res.json())
+      .then((responseJson) => {
+        setLocalidades(responseJson.localidades);
+        return responseJson;
+      });
+  };
+
+  const getTorneos = () => {
+    fetch("http://localhost:8000/torneo")
+      .then((res) => res.json())
+      .then((responseJson) => {
+        setTorneos(responseJson.torneos);
         return responseJson;
       });
   };
 
   const postData = () => {
-    fetch("http://localhost:5000/torneo", {
+    fetch("http://localhost:8000/torneo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +109,7 @@ function TorneosCRUD() {
   };
 
   const putData = () => {
-    fetch("http://localhost:5000/torneo", {
+    fetch("http://localhost:8000/torneo", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +122,7 @@ function TorneosCRUD() {
   };
 
   const deleteData = (id) => {
-    fetch("http://localhost:5000/torneo", {
+    fetch("http://localhost:8000/torneo", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -149,7 +160,7 @@ function TorneosCRUD() {
   const editar = (dato) => {
     console.log("editar");
     let contador = 0;
-    let datos = data.torneos;
+    let datos = torneos;
     datos.map((registro) => {
       if (dato.id == registro.id) {
         datos[contador].nombre = dato.nombre;
@@ -176,7 +187,7 @@ function TorneosCRUD() {
     );
     if (opcion == true) {
       let contador = 0;
-      let arreglo = data.torneos;
+      let arreglo = torneos;
       arreglo.map((registro) => {
         if (dato.id == registro.id) {
           arreglo.splice(contador, 1);
@@ -196,8 +207,8 @@ function TorneosCRUD() {
     console.log("insertar");
     console.log(form);
     let valorNuevo = form;
-    valorNuevo.id = data.torneos.length + 1;
-    let lista = data.torneos;
+    valorNuevo.id = torneos.length + 1;
+    let lista = torneos;
     lista.push(valorNuevo);
     setdata({ torneos: lista });
     console.log(lista);
@@ -233,7 +244,7 @@ function TorneosCRUD() {
   const search = (e) => {
     let searchData = [];
     if (e.target.value !== "") {
-      data.torneos.map((torneo) => {
+      torneos.map((torneo) => {
         if (
           torneo.nombre.toLowerCase().includes(e.target.value.toLowerCase())
         ) {
@@ -244,7 +255,7 @@ function TorneosCRUD() {
     } else {
       searchData = getData();
     }
-    console.log(data.torneos);
+    console.log(torneos);
   };
 
   return (
@@ -252,9 +263,11 @@ function TorneosCRUD() {
       <Container>
         <h2>Torneos</h2>
         <br />
-        <input
+        <div className="d-flex justify-content-between mb-2 pe-4">
+          <input
           onChange={(e) => search(e)}
-          placeholder="Buscar por nombre"
+          placeholder="Buscar por club"
+          className="form-control w-75 me-0"
           type="text"
         />
         <Button
@@ -264,9 +277,8 @@ function TorneosCRUD() {
         >
           Crear
         </Button>
-        <br />
-        <br />
-        <Table>
+        </div>
+        <Table className={styles.tabla}>
           <thead>
             <tr>
               <th>ID</th>
@@ -276,12 +288,12 @@ function TorneosCRUD() {
               <th>Equipos</th>
               <th>Ubicación</th>
               <th>Categoría</th>
-              <th>_</th>
+              <th>Acciones</th>
             </tr>
           </thead>
 
           <tbody>
-            {data.torneos.map((torneo) => (
+            {torneos.map((torneo) => (
               <tr key={torneo.id}>
                 <td>{torneo.id}</td>
                 <td>{torneo.nombre}</td>
@@ -289,9 +301,7 @@ function TorneosCRUD() {
                 <td>{torneo.fin}</td>
                 <td>{torneo.equipos}</td>
                 <td>{torneo.ubicacion}</td>
-                <td>
-                  {categorias.find((c) => c.id == torneo.categoria).nombre}
-                </td>
+                <td>{torneo.categoria}</td>
                 <td>
                   <Button
                     color="primary"
@@ -478,7 +488,7 @@ function TorneosCRUD() {
               className="form-control"
               readOnly
               type="text"
-              value={data.torneos.length + 1}
+              value={torneos.length + 1}
             />
           </FormGroup>
 
@@ -525,6 +535,37 @@ function TorneosCRUD() {
 
           <FormGroup>
             <label>Ubicación</label>
+            <div className="inline-flex">
+            <input
+              onChange={() => {handleChangeInsert; setProvincia((e)=> e.target.value)}}
+              list="provincias_list"
+              type="search"
+              className="form-control ds-input"
+              placeholder="Buscar provincia..."
+              aria-label="Search docs for..."
+              autoComplete="off"
+              data-bd-docs-version="5.1"
+              spellCheck="false"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-owns="algolia-autocomplete-listbox-0"
+              dir="auto"
+              ></input>
+            <datalist id="provincias_list">
+              <option>Seleccionar</option>
+              {provincias.map((provincia) => {
+                  return (
+                    <option
+                    key={provincia.id}
+                    value={provincia.id}
+                    className="dropdown-item"
+                    >
+                    {provincia.nombre}
+                  </option>
+                );
+              })}
+            </datalist>
             <input
               onChange={handleChangeInsert}
               list="localidades_list"
@@ -541,21 +582,24 @@ function TorneosCRUD() {
               aria-expanded="false"
               aria-owns="algolia-autocomplete-listbox-0"
               dir="auto"
-            ></input>
+              ></input>
             <datalist id="localidades_list">
               <option>Seleccionar</option>
-              {localidades.map((ubicacion) => {
-                return (
-                  <option
+              {
+              
+              localidades.map((ubicacion) => {
+                  return (
+                    <option
                     key={ubicacion.id}
                     value={ubicacion.id}
                     className="dropdown-item"
-                  >
-                    {equipo.nombre}
+                    >
+                    {ubicacion.nombre}
                   </option>
                 );
               })}
             </datalist>
+            </div>
           </FormGroup>
 
           <FormGroup>
@@ -583,7 +627,7 @@ function TorneosCRUD() {
                 return (
                   <option
                     key={categoria.id}
-                    value={categoria.id}
+                    value={categoria.nombre}
                     className="dropdown-item"
                   >
                     {categoria.nombre}

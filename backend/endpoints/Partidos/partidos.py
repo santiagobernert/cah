@@ -36,7 +36,7 @@ def partido():
         if id_existe:
             print('partido ya existe')
         else:
-            nuevo_partido(id, titulo, torneo, categoria, equipoA, equipoB, arbitro1, arbitro2, mesa1, mesa2, sede, fecha, jornada, resultado)
+            nuevo_partido(id, titulo, torneo, categoria, equipoA, equipoB, sede, fecha, jornada, resultado, arbitro1, arbitro2, mesa1, mesa2, )
             print(f'partido {id} {equipoA} {equipoB} {sede} {fecha}, creado')
             partidos = Partido.query.all()
             response = jsonify({

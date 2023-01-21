@@ -29,7 +29,7 @@ from flask_jwt_extended import JWTManager
 def create_app():
     app = Flask(__name__)
     jwt = JWTManager(app)
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{USERNAME}:{PASSWORD}@127.0.0.1:3308/{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{USERNAME}:{PASSWORD}@127.0.0.1:3306/{DB_NAME}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.secret_key = 'yG@hFVO$%DFh'
     db.init_app(app)
