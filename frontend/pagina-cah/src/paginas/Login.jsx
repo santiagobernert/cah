@@ -13,7 +13,10 @@ export default function Login() {
     dni: '',
     contraseña: ''
   });
-
+  const errores = {
+    404: "Usuario no encontrado",
+    401: 'Contraseña incorrecta',
+  }
   const checkUser = () => {
     console.log(form);
     fetch("http://localhost:8000/login", {
@@ -30,11 +33,16 @@ export default function Login() {
           sessionStorage.setItem('token', response.access_token)
           response.json();
           console.log(response);
+          location.replace('/')
         }
         else {
           console.log("post error", response);
-          setErrorContraseña(response)
-          console.log(error); 
+          if(response.status == 404){
+            setErrorDni(errores[response.status])
+          }else {
+            setErrorContraseña(errores[response.status])
+          }
+          console.log(response.statusText); 
         }
           
       })
@@ -53,16 +61,16 @@ export default function Login() {
         <div className={styles.blob}></div>
         <div className="pt-5">
           {token && token != ""?
-            console.log('tas logueado capo'): (
+            location.replace('/'): (
               <Container className={styles.login}>
                 <img src={logo} />
                 <h4>Login</h4>
                 <Form>
                     <FormGroup>
-                        <FormControl required pattern='[0-9]{7,8}' type='number' name='dni' placeholder="Dni" onChange={handleChangeInsert} />
-                        <h6 className='text-danger'>{errorDni}</h6>
-                        <FormControl required pattern='' name='contraseña' type="password" placeholder="Contraseña" onChange={handleChangeInsert} />
-                        <h6 className='text-danger'>{errorContraseña}</h6>
+                        <FormControl className={errorDni? 'border border-danger':''} required pattern='[0-9]{7,8}' type='number' name='dni' placeholder="Dni" onChange={handleChangeInsert} />
+                        <p className='text-danger'>{errorDni}</p>
+                        <FormControl className={errorContraseña? 'border border-danger':''} required pattern='' name='contraseña' type="password" placeholder="Contraseña" onChange={handleChangeInsert} />
+                        <p className='text-danger'>{errorContraseña}</p>
                         <a href="">Olvidé mi clave</a>
                     </FormGroup>
                     <Button variant="primary" onClick={() => checkUser()}>Ingresar</Button>

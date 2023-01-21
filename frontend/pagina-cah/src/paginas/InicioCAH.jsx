@@ -33,7 +33,7 @@ export default function Inicio() {
                 href={item}
               >
                 <div key={cruds.indexOf(item)}>
-                  <h5>{item}</h5>
+                  <h5>{item.charAt(0).toUpperCase()}{item.substring(1)}</h5>
                 </div>
               </a>
             ))}
