@@ -48,13 +48,23 @@ jugadores = Blueprint('jugadores', __name__)
 def jugador():
     jugadores = Jugador.query.all()
     if request.method == 'GET':
-        jugadores = Jugador.query.all()
-        print([j.__asdict__() for j in jugadores])
-        response = jsonify({
-            'jugadores': [j.__asdict__() for j in jugadores],
+        if request.args:
+            dni = request.args.get('dni', type=int)
+            jugador = Jugador.query.filter_by(dni=dni).first()
+            print(jugador.__asdict__())
+            response = jsonify({
+            'jugador': jugador.__asdict__(),
             })
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response    
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response 
+        else:
+            jugadores = Jugador.query.all()
+            print([j.__asdict__() for j in jugadores])
+            response = jsonify({
+                'jugadores': [j.__asdict__() for j in jugadores],
+                })
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response    
     if request.method == 'POST':
         id = request.json['id']
         nombre = request.json['nombre']
