@@ -17,12 +17,13 @@ def torneo():
 
     if request.method == 'POST':
         print(request.get_json())
-        id = request.json[-1]['id']
-        nombre = request.json[-1]['nombre']
-        inicio = request.json[-1]['inicio']
-        fin = request.json[-1]['fin']
-        equipos = request.json[-1]['equipos']
-        ubicacion = request.json[-1]['ubicacion']
+        id = request.json['id']
+        nombre = request.json['nombre']
+        inicio = request.json['inicio']
+        fin = request.json['fin']
+        equipos = request.json['equipos']
+        ubicacion = request.json['ubicacion']
+        categoria = request.json['categoria']
 
         id_existe = Torneo.query.filter_by(id=id).first()
         nombre_existe = Torneo.query.filter_by(nombre=nombre).first()
@@ -34,7 +35,7 @@ def torneo():
             print('torneo ya existe')
             return'torneo ya existe'
         else:
-            nuevo_torneo(id, nombre, inicio, fin, equipos, ubicacion)
+            nuevo_torneo(id, nombre, inicio, fin, equipos, ubicacion, categoria)
             print(f'torneo {id} {nombre} {inicio} {ubicacion} creado')
             response = jsonify({
             'torneos': [t.__asdict__() for t in torneos]

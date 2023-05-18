@@ -210,7 +210,7 @@ function TorneosCRUD() {
     valorNuevo.id = torneos.length + 1;
     let lista = torneos;
     lista.push(valorNuevo);
-    setdata({ torneos: lista });
+    setTorneos({ torneos: lista });
     console.log(lista);
     postData();
     setmodalInsertar(false);
@@ -238,12 +238,12 @@ function TorneosCRUD() {
           ).id
         : "",
     });
-    console.log(form);
   };
 
   const search = (e) => {
     let searchData = [];
     if (e.target.value !== "") {
+      console.log("torneos", torneos);
       torneos.map((torneo) => {
         if (
           torneo.nombre.toLowerCase().includes(e.target.value.toLowerCase())
@@ -293,7 +293,8 @@ function TorneosCRUD() {
           </thead>
 
           <tbody>
-            {torneos.map((torneo) => (
+            {
+            torneos.map((torneo) => (
               <tr key={torneo.id}>
                 <td>{torneo.id}</td>
                 <td>{torneo.nombre}</td>
@@ -537,7 +538,7 @@ function TorneosCRUD() {
             <label>Ubicación</label>
             <div className="inline-flex">
             <input
-              onChange={() => {handleChangeInsert; setProvincia((e)=> e.target.value)}}
+              onChange={() => {handleChangeInsert}}
               list="provincias_list"
               type="search"
               className="form-control ds-input"
