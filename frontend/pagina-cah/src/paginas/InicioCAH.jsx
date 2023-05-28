@@ -5,6 +5,7 @@ export default function Inicio() {
   let cruds = [
     "arbitros",
     "asociaciones",
+    "articulos",
     "clubes",
     "equipos",
     "jugadores",

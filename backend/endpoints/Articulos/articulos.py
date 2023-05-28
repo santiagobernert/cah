@@ -17,18 +17,19 @@ def articulo():
         return response    
     if request.method == 'POST':
         id = request.json['id']
-        usuario = request.json['usuario']
+        titulo = request.json['titulo']
+        portada = request.json['portada']
+        tags = request.json['tags']
+        cuerpo = request.json['cuerpo']
         fecha = request.json['fecha']
-        importe = request.json['importe']
-        banco = request.json['banco']
 
         id_existe = Articulo.query.filter_by(id=id).first()
         
         if id_existe:
             print('articulo ya existe')
         else:
-            nuevo_articulo(id, usuario, fecha, importe, banco)
-            print(f'articulo {usuario} {fecha} {importe} {banco}, creado')
+            nuevo_articulo(id, titulo, portada, tags, cuerpo, fecha)
+            print(f'articulo {titulo} {fecha} {tags}, creado')
             articulos = Articulo.query.all()
             response = jsonify({
                 'articulos': [a.__asdict__() for a in articulos],
@@ -43,12 +44,13 @@ def articulo():
         id = valores['id']
         print(valores)
         articulo = Articulo.query.filter_by(id=id).first()
-        print(articulo.nombre, articulo.apellido, articulo.nacimiento)
+        print(articulo.titulo, articulo.tags, articulo.fecha)
         articulo.id = valores['id']
-        articulo.usuario = valores['usuario']
+        articulo.titulo = valores['titulo']
+        articulo.portada = valores['portada']
+        articulo.tags = valores['tags']
+        articulo.cuerpo = valores['cuerpo']
         articulo.fecha = valores['fecha']
-        articulo.importe = valores['importe']
-        articulo.banco = valores['banco']
         db.session.commit()
         print('articulo ', id, ' editado')
         articulos = Articulo.query.all()

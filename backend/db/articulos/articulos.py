@@ -6,7 +6,7 @@ class Articulo(db.Model):
     titulo = db.Column(db.String(100))
     portada = db.Column(db.String(100))
     tags = db.Column(db.String(40))
-    cuerpo = db.Column(db.String(10))
+    cuerpo = db.Column(db.String(200))
     fecha = db.Column(db.Date)
     
 

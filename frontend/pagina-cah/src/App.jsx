@@ -16,6 +16,7 @@ import TorneosCRUD from "/src/cruds/TorneosCRUD.jsx";
 import UsuariosCRUD from "/src/cruds/UsuariosCRUD.jsx";
 import InicioCAH from "/src/paginas/InicioCAH.jsx";
 import Login from "/src/paginas/Login.jsx";
+import ArticulosCRUD from './cruds/ArticulosCRUD';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/asociaciones" element={<AsociacionesCRUD />} />
           <Route path="/arbitros" element={<ArbitrosCRUD />} />
+          <Route path="/articulos" element={<ArticulosCRUD />} />
           <Route path="/clubes" element={<ClubesCRUD />} />
           <Route path="/equipos" element={<EquiposCRUD />} />
           <Route path="/jugadores" element={<JugadoresCRUD />} />
