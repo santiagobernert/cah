@@ -50,7 +50,11 @@ def jugador():
     if request.method == 'GET':
         if request.args:
             dni = request.args.get('dni', type=int)
-            jugador = Jugador.query.filter_by(dni=dni).first()
+            id = request.args.get('id', type=int)
+            if dni:
+                jugador = Jugador.query.filter_by(dni=dni).first()
+            else:
+                jugador = Jugador.query.filter_by(id=id).first()
             print(jugador.__asdict__())
             response = jsonify({
             'jugador': jugador.__asdict__(),
