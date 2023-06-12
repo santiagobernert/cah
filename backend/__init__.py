@@ -16,6 +16,7 @@ from endpoints.Login.login import login
 from endpoints.Localidades.localidades import localidades
 from endpoints.Mesas.mesas import mesas
 from endpoints.Partidos.partidos import partidos
+from endpoints.Posiciones.posiciones import posiciones
 from endpoints.Pases.pases import pases
 from endpoints.Roles.roles import roles
 from endpoints.Sedes.sedes import sedes
@@ -31,6 +32,7 @@ def create_app():
     jwt = JWTManager(app)
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{USERNAME}:{PASSWORD}@127.0.0.1:3308/{DB_NAME}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['JSON_SORT_KEYS'] = False
     app.secret_key = 'yG@hFVO$%DFh'
     db.init_app(app)
 
@@ -47,6 +49,7 @@ def create_app():
     app.register_blueprint(localidades, url_prefix='/')
     app.register_blueprint(mesas, url_prefix='/')
     app.register_blueprint(partidos, url_prefix='/')
+    app.register_blueprint(posiciones, url_prefix='/')
     app.register_blueprint(pases, url_prefix='/')
     app.register_blueprint(roles, url_prefix='/')
     app.register_blueprint(sedes, url_prefix='/')
