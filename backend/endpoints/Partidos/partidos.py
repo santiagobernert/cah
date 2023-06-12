@@ -9,7 +9,13 @@ def partido():
     partidos = Partido.query.all()
     print([p.__asdict__() for p in partidos])
     if request.method == 'GET':
-        partidos = Partido.query.all()
+        if request.args:
+            categoria = request.args.get('categoria')
+            sexo = request.args.get('sexo')
+            torneo = request.args.get('torneo')
+            partidos = Partido.query.filter_by(torneo=torneo, sexo=sexo, categoria=categoria)
+        else:
+            partidos = Partido.query.all()
         response = jsonify({
             'partidos': [p.__asdict__() for p in partidos],
             })

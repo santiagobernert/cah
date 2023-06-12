@@ -8,13 +8,23 @@ articulos = Blueprint('articulos', __name__)
 def articulo():
     articulos = Articulo.query.all()
     if request.method == 'GET':
-        articulos = Articulo.query.all()
-        print([a.__asdict__() for a in articulos])
-        response = jsonify({
-            'articulos': [a.__asdict__() for a in articulos],
+        if request.args:
+            id = request.args.get('id', type=int)
+            articulo = Articulo.query.filter_by(id=id).first()
+            print(articulo.__asdict__())
+            response = jsonify({
+            'articulo': articulo.__asdict__(),
             })
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response    
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response 
+        else:
+            articulos = Articulo.query.all()
+            print([a.__asdict__() for a in articulos])
+            response = jsonify({
+                'articulos': [a.__asdict__() for a in articulos],
+                })
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response    
     if request.method == 'POST':
         id = request.json['id']
         titulo = request.json['titulo']
