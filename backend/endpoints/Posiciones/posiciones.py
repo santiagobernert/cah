@@ -24,46 +24,44 @@ class Tabla:
         self.partidos = partidos
         # Obteniendo equipos de cada partido, convirtiendolos en una sola lista y eliminando duplicados
         self.equipos = list(dict.fromkeys(reduce(lambda x,y: x+y, [[p.equipoA,p.equipoB]for p in partidos])))
-        self.posiciones = {}
+        self.posiciones = []
 
         print(self.equipos)
         for e in self.equipos:
-            self.posiciones[e] = {"J":0, "G":0, "P":0, "E":0, "GF":0, "GC":0, "DG":0, "PTS":0, }
+            self.posiciones.append({"Equipo": e,"J":0, "G":0, "P":0, "E":0, "GF":0, "GC":0, "DG":0, "PTS":0, })
 
         for p in partidos:
-            self.posiciones[p.equipoA]["J"] += 1
-            self.posiciones[p.equipoB]["J"] += 1
+            equipoA = next(e for e in self.posiciones if e["Equipo"] == p.equipoA)
+            equipoB = next(e for e in self.posiciones if e["Equipo"] == p.equipoB)
+            equipoA["J"] += 1
+            equipoB["J"] += 1
             # sum goal difference
-            self.posiciones[p.equipoA]["GF"] += int(p.resultado.split("-")[0])
-            self.posiciones[p.equipoB]["GF"] += int(p.resultado.split("-")[1])
-            self.posiciones[p.equipoA]["GC"] += int(p.resultado.split("-")[1])
-            self.posiciones[p.equipoB]["GC"] += int(p.resultado.split("-")[0])
-            self.posiciones[p.equipoA]["DG"] = self.posiciones[p.equipoA]["GF"]-self.posiciones[p.equipoA]["GC"]
-            self.posiciones[p.equipoB]["DG"] = self.posiciones[p.equipoB]["GF"]-self.posiciones[p.equipoB]["GC"]
+            equipoA["GF"] += int(p.resultado.split("-")[0])
+            equipoB["GF"] += int(p.resultado.split("-")[1])
+            equipoA["GC"] += int(p.resultado.split("-")[1])
+            equipoB["GC"] += int(p.resultado.split("-")[0])
+            equipoA["DG"] = equipoA["GF"]-equipoA["GC"]
+            equipoB["DG"] = equipoB["GF"]-equipoB["GC"]
             # sum points to winner and loser
             if p.resultado.split("-")[0] > p.resultado.split("-")[1]:
-                self.posiciones[p.equipoA]["PTS"] += 3
-                self.posiciones[p.equipoA]["G"] += 1
-                self.posiciones[p.equipoB]["PTS"] += 1
-                self.posiciones[p.equipoB]["P"] += 1
+                equipoA["PTS"] += 3
+                equipoA["G"] += 1
+                equipoB["PTS"] += 1
+                equipoB["P"] += 1
             elif p.resultado.split("-")[0] < p.resultado.split("-")[1]:
-                self.posiciones[p.equipoB]["PTS"] += 3
-                self.posiciones[p.equipoA]["G"] += 1
-                self.posiciones[p.equipoA]["PTS"] += 1
-                self.posiciones[p.equipoB]["P"] += 1
+                equipoB["PTS"] += 3
+                equipoA["G"] += 1
+                equipoA["PTS"] += 1
+                equipoB["P"] += 1
             else:
-                self.posiciones[p.equipoA]["PTS"] += 2
-                self.posiciones[p.equipoB]["PTS"] += 2
-                self.posiciones[p.equipoA]["E"] += 1
-                self.posiciones[p.equipoB]["E"] += 1
+                equipoA["PTS"] += 2
+                equipoB["PTS"] += 2
+                equipoA["E"] += 1
+                equipoB["E"] += 1
 
     def str(self):
-        # turning into list (points, name)
-        pts = [(v["PTS"], k) for k,v in self.posiciones.items()]
         # sorting by points
-        order = sorted(pts, reverse=True)
-        # turning to dict again
-        posiciones = {k:self.posiciones[k] for v,k in order}
+        posiciones = sorted(self.posiciones, key=lambda d: d['PTS'],reverse=True)
         return posiciones
 
             
