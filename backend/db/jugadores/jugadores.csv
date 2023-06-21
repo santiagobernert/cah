@@ -1,0 +1,101 @@
+id,nombre,apellido,dni,nacimiento,sexo,equipo,categoria,club,estado,peso,estatura,mano,posicion,sanguineo,telefono,provincia,departamento,localidad,domicilio,obrasocial,carnet
+1,Quintilla,Lambregts,35417100,17-07-2001,Femenino,5,Junior,Universidad Nacional de Cuyo,habillitado,90,205,Derecha,Lateral,B+,192-287-9848,Alley,Vilela,Dobříš,73750 Fulton Trail,Medife,428-67-2999
+2,Hanni,Schwand,20436431,19-01-1999,Femenino,11,Junior,Godoy Cruz,habillitado,114,179,Derecha,Lateral,B+,573-215-8820,Alley,Ḩammām Damt,Kuala Lumpur,6 Donald Way,Swiss Medical,826-32-9431
+3,Jada,Culverhouse,25486067,30-04-1985,Femenino,6,Junior,Municipalidad de Tupungato,habillitado,100,186,Derecha,Lateral,A-,577-630-5723,Park,Ban Talat Bueng,Kibiti,324 Thackeray Road,Swiss Medical,300-55-1326
+4,Anissa,Karlik,54052882,11-02-1989,Masculino,1,Cadete,Municipalidad de Lujan,habillitado,65,175,Izquierda,Arquero,O-,754-311-2662,Way,Kalian,Semamung,69356 Lighthouse Bay Street,OSEP,417-95-4130
+5,Isabelita,Ramm,31271900,28-05-2001,Femenino,4,Mayor,Godoy Cruz,habillitado,106,207,Izquierda,Lateral,A-,267-591-9033,Park,Usab,Ramana,27 Pleasure Street,Medife,601-83-3746
+6,Solly,Chisnell,53831733,02-10-2000,Femenino,1,Junior,Godoy Cruz,habillitado,115,200,Izquierda,Extremo,B+,421-293-9866,Road,Tagbina,Zhangjiafan,166 Corben Road,OSDE,457-77-9683
+7,Sigmund,Itzkovici,50845136,09-02-1999,Masculino,10,Menor,Club Mendoza de Regatas,habillitado,56,174,Derecha,Lateral,A+,878-806-3448,Parkway,Ferraria,Kuhmalahti,131 Lyons Place,Medife,828-65-0957
+8,Rudolf,Andrichuk,35530912,13-11-2001,Femenino,12,Juvenil,Universidad Nacional de Cuyo,habillitado,108,187,Derecha,Lateral,O-,307-537-4728,Point,Na Kae,Si Satchanalai,5320 Maywood Circle,Sancor Salud,819-57-6244
+9,Reilly,Verey,29927808,03-03-1990,Masculino,2,Mayor,Municipalidad de Lujan,habillitado,109,151,Derecha,Pivot,A+,411-476-6836,Way,Geshan,Stepojevac,78 Nova Point,OSDE,382-66-3481
+10,Rachele,Konert,21812587,25-10-1980,Masculino,11,Junior,Municipalidad de Maipu,habillitado,79,169,Izquierda,Central,A-,346-174-2935,Avenue,Cannes,Yangmingbu,97435 Spenser Lane,Medife,791-06-5118
+11,Aida,Durdy,44295122,03-04-1993,Femenino,11,Cadete,Universidad Nacional de Cuyo,habillitado,130,163,Derecha,Central,A+,100-886-7341,Place,Wangzha,Chavães,39705 Comanche Circle,Medife,879-14-0248
+12,Bailie,Tinston,24559200,09-03-1986,Femenino,4,Junior,Municipalidad de Tupungato,habillitado,126,174,Izquierda,Pivot,O-,920-868-3421,Parkway,Ko Chan,Muurame,8 Goodland Drive,OSDE,136-42-4871
+13,Waverly,Rawll,31683757,21-08-2008,Femenino,3,Junior,Godoy Cruz,habillitado,84,174,Derecha,Extremo,B+,764-572-8630,Center,Sartana,Radoboj,9 Dunning Crossing,Sancor Salud,597-62-8048
+14,Fiona,Heibl,29902190,13-11-1989,Femenino,4,Cadete,Etiec,habillitado,82,202,Derecha,Lateral,O-,192-450-9089,Trail,Qeshm,Zhengji,0089 Northwestern Parkway,OSEP,548-27-3223
+15,Jessi,Pullar,34079220,13-01-2003,Femenino,6,Juvenil,Etiec,habillitado,73,148,Derecha,Extremo,A+,453-326-0342,Hill,Kónitsa,Chrzanów,7 Upham Plaza,OSEP,357-66-3335
+16,Aimil,Conklin,36986962,22-11-1992,Femenino,11,Junior,Godoy Cruz,habillitado,61,192,Ambas,Pivot,A+,990-767-7441,Way,Chengnan,Kekeri,86 Evergreen Alley,Medife,787-25-4214
+17,Margaretha,Slayford,31211673,25-07-2000,Masculino,1,Juvenil,Godoy Cruz,habillitado,121,195,Izquierda,Lateral,O-,557-745-7702,Hill,Tujing,São Torcato,07820 School Junction,OSDE,821-44-2397
+18,Mel,Landrean,32908180,07-06-2005,Masculino,9,Juvenil,Godoy Cruz,habillitado,77,142,Derecha,Pivot,O-,593-195-4543,Court,Planken,La Unión,1026 Dwight Pass,OSEP,166-67-1992
+19,Lenci,Worden,39672108,04-01-1989,Masculino,8,Junior,Municipalidad de Lujan,habillitado,102,205,Izquierda,Central,A-,511-529-0089,Court,Zahlé,Khafizan,785 Loomis Street,OSEP,698-76-0664
+20,Trixie,Brimmicombe,39081827,06-11-2009,Femenino,8,Junior,Municipalidad de Tupungato,habillitado,67,155,Derecha,Extremo,O-,923-804-7296,Crossing,Shuitai,Chengjiang,5199 Gulseth Street,Medife,678-22-6823
+21,Lurette,Wallworth,25262945,19-07-1996,Masculino,9,Cadete,Etiec,habillitado,76,202,Derecha,Lateral,O-,344-338-0387,Lane,Buçimas,Sukolilo,59 Meadow Vale Alley,Medife,722-86-0310
+22,Faith,Luxmoore,22052696,11-05-2004,Femenino,2,Junior,Municipalidad de Tupungato,habillitado,80,161,Izquierda,Lateral,O-,616-355-1304,Lane,Bebedouro,La Romana,963 Luster Place,Medife,427-99-1841
+23,Nataniel,Lumox,25255823,15-10-1991,Masculino,7,Cadete,Etiec,habillitado,66,177,Derecha,Central,O-,177-517-0227,Center,Stockholm,Suzaka,08716 Bluejay Lane,Sancor Salud,380-54-3451
+24,Amara,Bollans,31643321,18-03-1987,Masculino,5,Juvenil,Godoy Cruz,habillitado,123,171,Derecha,Arquero,O-,758-445-2067,Parkway,Shuikou,Tierra Blanca,2026 Debra Drive,OSDE,676-39-8977
+25,Derry,Lobb,42897399,09-09-1996,Femenino,10,Juvenil,Municipalidad de Tupungato,habillitado,112,202,Ambas,Extremo,A+,696-933-1196,Pass,Alto Barinas,Bertoua,520 Amoth Alley,Sancor Salud,331-31-1731
+26,Creighton,Styles,51888059,02-09-1994,Masculino,6,Menor,Municipalidad de Tupungato,no habilitado,107,208,Derecha,Arquero,O-,136-178-8873,Plaza,Pavlovsk,Rokietnica,342 Melrose Lane,OSEP,839-49-3422
+27,Bonny,Merioth,54603919,17-09-2007,Femenino,12,Juvenil,Universidad Nacional de Cuyo,habillitado,88,200,Izquierda,Central,B+,364-316-6607,Court,Dzhetygara,Manutapen,8 Chive Terrace,OSDE,659-15-8197
+28,Sheffield,Voce,50737256,18-10-1994,Femenino,1,Mayor,Municipalidad de Lujan,habillitado,90,148,Derecha,Lateral,B+,461-151-3249,Drive,Iksha,Chimbote,26 Cody Court,OSEP,717-25-8797
+29,Brunhilda,Bottjer,26578064,22-01-2005,Femenino,5,Juvenil,Etiec,habillitado,121,151,Izquierda,Central,O-,225-319-3882,Avenue,Várzea Alegre,Agen,10 Carey Circle,Sancor Salud,331-37-5917
+30,Kailey,Heater,29758641,05-02-2004,Masculino,2,Cadete,Municipalidad de Maipu,no habilitado,51,187,Izquierda,Lateral,A-,715-325-8262,Street,Dolati,Srebrenica,686 Ludington Alley,Swiss Medical,617-69-8813
+31,Leonard,Nutkins,37619675,30-04-1981,Masculino,1,Menor,Club Mendoza de Regatas,no habilitado,110,196,Derecha,Central,O-,498-314-3436,Point,Sintra,Xia Dawo,9737 Jay Drive,OSDE,306-71-4268
+32,Gizela,Bailes,28980639,13-08-1998,Masculino,4,Cadete,Municipalidad de Lujan,habillitado,79,174,Derecha,Pivot,A-,875-540-7617,Hill,Longxi,Akhaltsikhe,722 Northwestern Crossing,OSDE,539-27-1914
+33,Harlen,Wickins,38059915,04-03-2009,Masculino,10,Cadete,Universidad Nacional de Cuyo,habillitado,68,200,Derecha,Lateral,A-,981-719-7565,Terrace,Ningtang,Berovo,38 Texas Street,OSEP,868-15-9139
+34,Brant,Bruyntjes,44928131,13-11-2004,Femenino,1,Cadete,Municipalidad de Lujan,no habilitado,122,162,Izquierda,Central,A-,490-995-0710,Hill,Srostki,Banyue,4 American Drive,OSDE,438-11-9606
+35,Normand,Brear,25320213,07-08-2000,Femenino,6,Cadete,Godoy Cruz,habillitado,112,144,Izquierda,Central,A+,789-580-5246,Place,Tsingoni,Riversdale,819 Harbort Park,Sancor Salud,230-50-9741
+36,Chantal,Leeburne,42009222,22-09-1983,Femenino,7,Menor,Municipalidad de Tupungato,habillitado,79,160,Derecha,Pivot,B+,957-253-6162,Terrace,Järfälla,Ōta,50629 Londonderry Street,Swiss Medical,804-75-2509
+37,Franky,Children,22959739,14-12-1997,Masculino,3,Cadete,Universidad Nacional de Cuyo,habillitado,110,177,Derecha,Extremo,O-,592-545-1384,Center,Sîngerei,Shuren,39672 Fulton Avenue,Swiss Medical,656-90-7275
+38,Marc,Pree,24581503,03-09-1997,Masculino,4,Junior,Municipalidad de Lujan,habillitado,117,155,Izquierda,Lateral,A-,357-208-8927,Center,Krian,Reutov,4 Brickson Park Court,Sancor Salud,219-50-5232
+39,Nicolais,Ruste,28533506,15-01-1981,Femenino,10,Menor,Universidad Nacional de Cuyo,habillitado,51,201,Derecha,Central,A-,589-636-2511,Road,Cikoneng,Aş Şūrah aş Şaghīrah,5 Larry Street,OSDE,580-79-4138
+40,Edouard,Parriss,24056734,16-07-1985,Femenino,11,Cadete,Universidad Nacional de Cuyo,habillitado,87,200,Derecha,Central,B+,525-554-4692,Center,Quezaltepeque,Cikaso,7 Oxford Way,Medife,340-49-0191
+41,Lockwood,Gilphillan,36014551,28-02-1990,Femenino,7,Mayor,Municipalidad de Lujan,habillitado,99,150,Derecha,Extremo,A+,312-556-1259,Plaza,Old Kilcullen,Youcheng,795 Golf View Hill,OSDE,564-24-9176
+42,Cherise,Inglesent,21990297,17-07-1991,Masculino,9,Menor,Godoy Cruz,habillitado,118,150,Derecha,Extremo,A+,585-310-7513,Pass,Xianlong,Şafāshahr,5 Erie Point,Medife,644-31-5936
+43,Corbie,Brimmicombe,25695850,24-09-1991,Femenino,11,Mayor,Godoy Cruz,habillitado,51,199,Izquierda,Lateral,A-,541-737-4343,Pass,Brok,Nginokrajan,678 Starling Avenue,Medife,246-84-2433
+44,Rozamond,Cothey,44952414,02-05-2006,Masculino,10,Junior,Municipalidad de Tupungato,habillitado,115,201,Derecha,Pivot,B+,336-567-2570,Road,Ust’-Kut,Markovo,2235 Kedzie Terrace,Medife,272-93-1858
+45,Horace,Minger,40241789,24-02-2004,Masculino,4,Menor,Municipalidad de Lujan,habillitado,86,199,Derecha,Lateral,O-,772-813-8260,Place,Port Saint Lucie,San Ramon,19 Pierstorff Place,Medife,117-25-4789
+46,Osbourne,Witson,33783985,25-02-1997,Femenino,6,Menor,Municipalidad de Lujan,habillitado,114,169,Izquierda,Lateral,A+,249-951-0950,Hill,Novovorontsovka,Dori,32 Pankratz Circle,OSEP,232-71-9118
+47,Lyda,Selwin,32712190,26-06-2006,Femenino,1,Menor,Etiec,habillitado,116,175,Derecha,Central,A+,112-987-7207,Terrace,Fuji,Fanrong,934 Havey Point,OSEP,823-08-3182
+48,Cyndie,Phython,43323668,07-10-2008,Masculino,10,Cadete,Club Mendoza de Regatas,no habilitado,93,185,Derecha,Central,A-,967-661-8213,Plaza,Kudara-Somon,Lisui,068 Eliot Parkway,Medife,794-18-5046
+49,Irene,Dormand,51928023,22-03-1998,Femenino,7,Cadete,Universidad Nacional de Cuyo,habillitado,71,169,Derecha,Lateral,O-,933-536-3385,Park,Wuchagou,Volzhskiy,45 Ludington Way,Sancor Salud,893-65-4008
+50,Sebastiano,Ambrogini,49312169,03-09-1985,Femenino,11,Junior,Municipalidad de Lujan,habillitado,51,142,Derecha,Arquero,O-,130-164-7985,Point,Kato Pyrgos,Shklo,005 Coleman Court,Medife,439-71-2372
+51,Nero,Holywell,21505473,04-11-1992,Masculino,1,Menor,Universidad Nacional de Cuyo,habillitado,52,191,Izquierda,Extremo,A+,655-422-3983,Place,Tierra Blanca,Daixi,84 Melrose Road,Swiss Medical,203-15-2043
+52,Ophelie,Viel,40930399,21-11-1996,Masculino,6,Junior,Municipalidad de Tupungato,habillitado,89,188,Izquierda,Extremo,A+,407-384-2124,Court,Chyšky,Carrizal,166 Goodland Plaza,OSDE,108-94-6745
+53,Tailor,Comi,21860911,02-09-2009,Femenino,7,Mayor,Club Mendoza de Regatas,habillitado,126,207,Derecha,Central,O-,249-411-0247,Place,Shouxihu,Pernå,220 Shelley Avenue,OSDE,165-01-2069
+54,Claudianus,Wedge,22258293,22-07-2005,Masculino,7,Mayor,Godoy Cruz,habillitado,79,190,Derecha,Arquero,O-,549-342-0460,Place,Campos Novos,Ystad,42836 Scofield Circle,OSDE,841-92-8855
+55,Salvidor,Aimable,47544534,15-04-1994,Femenino,11,Mayor,Etiec,habillitado,79,185,Izquierda,Pivot,A+,478-454-5961,Place,Lidingö,Melong,5552 Clyde Gallagher Street,Sancor Salud,304-30-7344
+56,Ericha,Reightley,30171185,09-04-1996,Masculino,6,Menor,Universidad Nacional de Cuyo,habillitado,103,190,Izquierda,Arquero,B+,879-198-6811,Parkway,Lizhuang,Pasirnangka,88745 Gateway Trail,OSEP,393-11-1331
+57,Diana,Figgen,22276656,09-11-1981,Femenino,9,Juvenil,Godoy Cruz,no habilitado,119,197,Derecha,Pivot,A+,385-311-8304,Avenue,Atyrá,Los Rastrojos,05733 Colorado Road,OSDE,206-38-9795
+58,Malinde,Lissimore,46346248,23-07-1994,Femenino,4,Junior,Universidad Nacional de Cuyo,habillitado,59,159,Derecha,Pivot,O-,681-372-9885,Road,Lanipao,Berëza,563 Arrowood Street,Swiss Medical,573-52-8796
+59,Alla,Goodfellowe,37792398,28-01-1989,Femenino,11,Menor,Universidad Nacional de Cuyo,habillitado,85,155,Izquierda,Lateral,O-,592-435-6667,Court,Cawalo,Oslo,44 Reindahl Hill,OSEP,419-45-3545
+60,Layney,Whitbread,47719993,15-06-1993,Masculino,5,Cadete,Etiec,habillitado,75,192,Derecha,Extremo,B+,283-204-9224,Road,Gourma Rharous,Gaoxu,3381 Hintze Court,OSDE,258-56-4427
+61,Lovell,Bouchard,22770080,01-03-1994,Masculino,1,Junior,Etiec,habillitado,69,198,Derecha,Lateral,A-,563-808-2589,Center,Zhengmo,Colonia Minga Porá,66 Leroy Park,Medife,821-40-1265
+62,Marty,Mulligan,35111075,09-06-1987,Femenino,6,Menor,Club Mendoza de Regatas,habillitado,126,195,Izquierda,Central,O-,769-570-5704,Place,Cabuyao,Yerevan,8740 Magdeline Drive,Sancor Salud,451-91-5756
+63,Eveline,Camsey,52013401,01-07-1984,Femenino,7,Menor,Municipalidad de Lujan,habillitado,65,209,Izquierda,Lateral,B+,917-588-7867,Terrace,Kavār,Fatikchari,86 Delaware Trail,OSDE,785-97-7451
+64,Gisella,Tanton,42767009,26-01-1989,Masculino,12,Mayor,Municipalidad de Maipu,habillitado,70,191,Izquierda,Central,A-,603-335-1694,Alley,Pingba,Beverwijk,2102 Cody Pass,Swiss Medical,831-27-8879
+65,Dana,Jurn,28985478,08-10-2003,Femenino,11,Junior,Municipalidad de Lujan,habillitado,98,153,Izquierda,Extremo,B+,580-651-9830,Pass,Dolice,Huanggang,35 Goodland Center,Medife,472-65-5956
+66,Oby,Gilders,54507779,27-01-2008,Masculino,5,Juvenil,Etiec,habillitado,112,205,Ambas,Central,B+,717-416-6825,Parkway,Newtown,Igbeti,341 Killdeer Lane,Swiss Medical,670-25-9582
+67,Igor,Antoniewski,25979349,14-03-1999,Masculino,2,Mayor,Municipalidad de Maipu,habillitado,84,153,Derecha,Lateral,A-,410-678-2408,Way,Gaoyu,Beiqijia,56351 Gulseth Circle,OSEP,225-29-1505
+68,Cosimo,Josuweit,30772339,01-02-2008,Masculino,4,Mayor,Etiec,habillitado,90,184,Derecha,Extremo,A-,426-620-4152,Drive,Wasior,Pleszew,33 Bay Trail,Swiss Medical,757-20-2945
+69,Sydelle,Silverwood,27540004,14-12-2002,Femenino,10,Mayor,Municipalidad de Tupungato,habillitado,95,149,Derecha,Extremo,A-,728-850-7956,Circle,Lipinki Łużyckie,Kassala,7033 Golf Course Street,OSDE,448-88-7653
+70,Allene,Ackland,43827994,20-10-1993,Masculino,3,Menor,Club Mendoza de Regatas,habillitado,80,159,Derecha,Lateral,A-,798-949-8167,Court,Nerekhta,Salento,02886 5th Hill,Sancor Salud,771-83-3342
+71,Dasya,Tooby,41508688,14-09-1996,Masculino,3,Junior,Municipalidad de Tupungato,habillitado,114,150,Derecha,Pivot,O-,843-593-0095,Drive,Cañuelas,Trąbki Wielkie,76 Schurz Point,OSEP,260-34-0587
+72,Haydon,Kilminster,49976187,07-06-1984,Masculino,8,Menor,Universidad Nacional de Cuyo,habillitado,72,176,Derecha,Extremo,O-,658-864-6415,Trail,Tarnogskiy Gorodok,Skövde,54 Eagle Crest Parkway,Sancor Salud,503-16-4588
+73,Gran,Scamerden,48098107,11-11-1993,Masculino,5,Cadete,Club Mendoza de Regatas,habillitado,53,151,Izquierda,Pivot,B+,196-644-8350,Place,Tegalsari,Xiangquan,7862 Kropf Trail,Swiss Medical,343-38-9675
+74,Ferne,Waumsley,28470615,30-05-1998,Femenino,10,Cadete,Municipalidad de Tupungato,habillitado,69,144,Ambas,Lateral,A+,879-608-8925,Crossing,Shuvakish,Amos,2273 Buena Vista Crossing,OSDE,811-03-5026
+75,Olin,Spinige,21060612,07-05-2001,Femenino,11,Juvenil,Club Mendoza de Regatas,habillitado,103,205,Derecha,Extremo,A+,696-873-8928,Plaza,Ni’ao,Bangbayang,7 Homewood Hill,OSEP,820-79-1275
+76,Lorne,Rossiter,21747542,06-01-2002,Masculino,11,Menor,Club Mendoza de Regatas,no habilitado,127,161,Derecha,Lateral,B+,718-430-9075,Way,Arıqıran,Kalinovskaya,33532 Magdeline Trail,OSEP,796-46-2945
+77,Karly,Petz,34013161,20-07-1993,Masculino,5,Cadete,Municipalidad de Maipu,habillitado,69,198,Derecha,Pivot,A+,217-938-2454,Place,Timezgana,Ajaccio,93999 Bunting Pass,OSDE,271-25-2764
+78,Worthy,January,30115349,02-11-2005,Femenino,1,Menor,Etiec,habillitado,63,198,Izquierda,Central,A+,448-168-2601,Way,Heshui,Chwaszczyno,27534 Pepper Wood Trail,OSEP,533-55-3814
+79,Ashla,Helgass,32069205,14-01-2004,Femenino,9,Junior,Universidad Nacional de Cuyo,habillitado,81,155,Izquierda,Central,A+,566-379-8274,Place,Sukaharja,Prroshyan,2196 Brown Hill,Sancor Salud,171-12-1049
+80,Rozalie,Jalland,36773796,12-10-2003,Masculino,10,Menor,Etiec,habillitado,95,171,Izquierda,Lateral,O-,202-833-4354,Street,Lianga,Bangkle,33 Larry Center,Sancor Salud,373-25-4374
+81,Dido,Twidale,48088084,02-01-2002,Femenino,1,Junior,Municipalidad de Tupungato,habillitado,83,167,Derecha,Pivot,A-,833-408-0087,Place,Jianzhatan,Qadsīyā,82029 Cottonwood Trail,Sancor Salud,262-93-3981
+82,Tobit,Petrusch,50219201,11-11-1985,Masculino,3,Menor,Etiec,habillitado,100,187,Izquierda,Extremo,A+,225-659-5652,Way,Stockholm,Gręboszów,51 Walton Junction,Medife,628-56-3561
+83,Upton,Gude,24921694,09-09-1991,Masculino,8,Menor,Etiec,habillitado,112,150,Derecha,Lateral,A-,572-956-9700,Junction,Nanyanchuan,Dangjiaxian,77 Pine View Center,Medife,622-11-3380
+84,Marti,McAlarney,39965306,07-03-1994,Femenino,1,Cadete,Etiec,habillitado,77,185,Derecha,Arquero,A-,506-831-1096,Center,Santa Rosa,Krajan Tambakrejo,9971 Pawling Junction,OSEP,451-52-0367
+85,Urson,Joyes,42544682,02-10-2006,Masculino,7,Menor,Universidad Nacional de Cuyo,habillitado,98,148,Derecha,Extremo,A+,138-176-2614,Alley,Rabat,Haarlem,6 Center Place,OSEP,254-80-9967
+86,Durante,Duerden,49567214,15-04-2010,Masculino,5,Menor,Municipalidad de Lujan,habillitado,102,143,Derecha,Pivot,B+,786-726-4211,Trail,Qaxbaş,Zlynka,494 Mifflin Trail,Swiss Medical,844-49-8603
+87,Augy,Wimpeney,22087239,08-01-1989,Masculino,10,Cadete,Club Mendoza de Regatas,habillitado,65,205,Derecha,Pivot,O-,377-960-0064,Drive,Tai’an,Takefu,7 Schlimgen Road,Medife,632-33-3209
+88,Gaylor,Nisius,24701900,26-07-1986,Femenino,4,Juvenil,Universidad Nacional de Cuyo,habillitado,106,152,Derecha,Pivot,O-,926-387-8290,Center,Bornu Yassu,Baleagung,6 Duke Crossing,Swiss Medical,713-32-3061
+89,Alecia,Newbury,53134924,15-07-1997,Masculino,9,Junior,Municipalidad de Lujan,habillitado,78,149,Derecha,Central,A+,546-233-6182,Road,Cirumput,Calauag,16 Dottie Way,OSDE,664-54-0428
+90,Saleem,Vokes,41956936,23-12-2004,Masculino,6,Menor,Club Mendoza de Regatas,habillitado,67,176,Derecha,Extremo,A+,457-746-6393,Point,København,Powidz,64675 Springview Pass,Swiss Medical,786-59-7208
+91,Giorgi,Plait,20451483,06-06-1981,Femenino,6,Junior,Municipalidad de Maipu,habillitado,90,176,Derecha,Lateral,A+,616-788-6360,Crossing,Póvoa do Valado,Ciguna,0 Oxford Plaza,OSEP,549-97-8803
+92,Arabelle,De Hooge,47000427,13-06-2003,Femenino,2,Junior,Municipalidad de Tupungato,habillitado,50,190,Izquierda,Extremo,O-,814-184-0807,Alley,Patapan,Tajimi,22 Amoth Pass,OSEP,840-58-9915
+93,June,Freke,30543155,15-01-2002,Masculino,8,Mayor,Municipalidad de Lujan,habillitado,70,143,Derecha,Central,A-,373-442-4542,Place,Tutem,Resplendor,824 Tennyson Trail,Swiss Medical,287-37-1057
+94,Dewain,Ormes,50836931,26-07-1998,Masculino,11,Junior,Universidad Nacional de Cuyo,habillitado,53,187,Derecha,Lateral,O-,281-811-0910,Court,Hunkuyi,Polańczyk,93607 Fieldstone Road,OSDE,133-23-4556
+95,Cordie,Preuvost,43706222,20-02-2007,Masculino,8,Juvenil,Universidad Nacional de Cuyo,habillitado,112,146,Izquierda,Lateral,B+,382-279-9265,Hill,Houndé,Danao,1407 Linden Pass,OSEP,417-22-4682
+96,Marysa,Borg-Bartolo,37330238,09-02-1984,Masculino,7,Mayor,Godoy Cruz,habillitado,83,209,Izquierda,Pivot,O-,407-630-8526,Road,Lewotola,San Quintin,720 Susan Terrace,Swiss Medical,333-74-9991
+97,Franny,Luthwood,28945972,19-06-1989,Femenino,3,Junior,Club Mendoza de Regatas,no habilitado,53,155,Ambas,Pivot,B+,901-258-9616,Drive,Xiangshun,Nong Khae,1012 Sage Center,Swiss Medical,530-37-7910
+98,Merralee,Govern,34027587,03-05-1997,Femenino,8,Juvenil,Municipalidad de Lujan,habillitado,53,153,Derecha,Central,A-,442-608-1370,Road,Ciawi,Saki,1 Dayton Alley,Swiss Medical,227-42-9956
+99,Berget,Jeayes,23352919,27-09-2005,Femenino,6,Juvenil,Godoy Cruz,habillitado,125,179,Derecha,Lateral,B+,912-136-8551,Lane,Queluz,Plato,16795 Lakewood Gardens Alley,Swiss Medical,326-91-9023
+100,Raimundo,Duplain,49757885,08-11-2005,Masculino,6,Mayor,Municipalidad de Lujan,habillitado,93,175,Derecha,Extremo,A-,145-103-0509,Alley,Jiebu,Västerås,1 Glendale Lane,Swiss Medical,180-91-4183

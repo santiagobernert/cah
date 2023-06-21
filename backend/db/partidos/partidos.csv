@@ -1,0 +1,51 @@
+id,titulo,torneo,categoria,equipoA,equipoB,sede,fecha,jornada,resultado,arbitro1,arbitro2,mesa1,mesa2
+1,Bulls vs Heat,Amateur Handball Championship 2026,Menor,28,49,Oyondu,02-05-2019,Fecha 7,19-17,40,23,6,20
+2,76ers vs Bucks,Senior Handball Championship 2027,Juvenil,17,41,Edgeify,31-05-2022,Final,5-3,24,2,46,19
+3,Thunder vs Clippers,Senior Handball Championship 2027,Mayor,49,2,Fivebridge,19-08-2017,Fecha 1,19-17,13,25,9,20
+4,Celtics vs Knicks,Youth Handball Championship 2024,Junior,9,37,Dabjam,11-08-2022,Fecha 4,3-1,46,4,30,29
+5,Spurs vs Rockets,Amateur Handball Championship 2026,Junior,13,14,Linktype,07-08-2018,Fecha 3,20-18,49,35,8,22
+6,Celtics vs Knicks,Regional Handball Championship 2023,Mayor,49,20,Rhyloo,12-06-2021,Fecha 4,14-12,44,46,20,20
+7,Spurs vs Rockets,Indoor Handball Championship 2029,Juvenil,12,27,Yacero,08-03-2018,Final,19-17,41,47,19,18
+8,Nets vs Raptors,Women's Handball Championship 2025,Menor,48,29,Vinder,03-07-2017,Fecha 1,20-18,26,3,9,28
+9,Spurs vs Rockets,Senior Handball Championship 2027,Menor,11,21,Trudeo,31-08-2018,Fecha 2,23-21,45,43,44,8
+10,Thunder vs Clippers,Beach Handball Championship 2028,Menor,50,50,Photobug,26-07-2017,Fecha 3,14-12,26,12,7,43
+11,76ers vs Bucks,Amateur Handball Championship 2026,Mayor,3,32,Trudoo,24-07-2018,Fecha 6,16-14,11,11,49,7
+12,Lakers vs Warriors,Regional Handball Championship 2023,Mayor,39,49,Yadel,20-11-2016,Fecha 4,8-6,27,24,34,12
+13,Bulls vs Heat,Indoor Handball Championship 2029,Junior,49,42,Linkbuzz,25-05-2022,Final,23-21,46,1,21,7
+14,Celtics vs Knicks,Senior Handball Championship 2027,Junior,43,2,Fivechat,05-06-2017,Fecha 6,24-22,49,31,42,26
+15,Lakers vs Warriors,Beach Handball Championship 2028,Menor,29,19,Roomm,03-03-2022,Fecha 4,18-16,13,15,16,11
+16,Celtics vs Knicks,Amateur Handball Championship 2026,Juvenil,4,5,Leexo,07-05-2019,Fecha 6,15-13,11,31,48,35
+17,Celtics vs Knicks,National Handball Championship 2021,Junior,3,36,Omba,06-03-2022,Final,20-18,29,23,18,26
+18,Spurs vs Rockets,National Handball Championship 2021,Juvenil,28,21,Linklinks,07-05-2021,Fecha 5,12-10,7,36,49,44
+19,Bulls vs Heat,Women's Handball Championship 2025,Menor,10,10,Livetube,18-04-2021,Fecha 3,19-17,11,30,10,5
+20,Thunder vs Clippers,Youth Handball Championship 2024,Cadete,7,29,Yombu,17-05-2019,Fecha 1,15-13,38,41,31,33
+21,Lakers vs Warriors,International Handball Championship 2022,Cadete,2,35,Zooxo,12-06-2022,Semifinal,9-7,10,28,31,36
+22,Spurs vs Rockets,Beach Handball Championship 2028,Juvenil,13,23,Rhyloo,10-01-2021,Final,5-3,43,4,14,49
+23,Nets vs Raptors,Indoor Handball Championship 2029,Junior,6,16,Skyble,19-02-2022,Fecha 4,23-21,18,42,8,47
+24,Celtics vs Knicks,Mixed Handball Championship 2030,Menor,36,41,Riffwire,17-01-2020,Fecha 7,20-18,30,42,8,21
+25,Thunder vs Clippers,Indoor Handball Championship 2029,Menor,7,15,Oloo,24-01-2023,Semifinal,23-21,1,35,27,12
+26,Thunder vs Clippers,Senior Handball Championship 2027,Menor,44,8,Rhynyx,14-04-2019,Final,16-14,4,27,21,25
+27,Lakers vs Warriors,Senior Handball Championship 2027,Cadete,14,49,Livetube,24-03-2019,Fecha 7,17-15,37,10,44,21
+28,Spurs vs Rockets,Amateur Handball Championship 2026,Juvenil,47,14,Jazzy,17-01-2021,Fecha 2,11-9,1,32,19,34
+29,Trail Blazers vs Nuggets,Mixed Handball Championship 2030,Menor,32,32,Blogpad,20-09-2017,Fecha 5,17-15,37,47,43,24
+30,Nets vs Raptors,National Handball Championship 2021,Cadete,7,32,Tavu,14-06-2021,Fecha 2,18-16,37,28,30,22
+31,Bulls vs Heat,Senior Handball Championship 2027,Juvenil,46,44,Skinte,05-12-2018,Fecha 4,25-23,39,5,22,18
+32,Lakers vs Warriors,Senior Handball Championship 2027,Junior,2,47,Meezzy,10-12-2022,Fecha 3,3-1,28,24,22,7
+33,76ers vs Bucks,National Handball Championship 2021,Juvenil,47,21,Kare,21-01-2020,Fecha 5,15-13,39,24,29,20
+34,Lakers vs Warriors,Beach Handball Championship 2028,Menor,7,46,Youbridge,10-05-2020,Fecha 4,6-4,14,1,36,21
+35,Nets vs Raptors,Beach Handball Championship 2028,Junior,26,15,Devshare,08-06-2022,Fecha 1,3-1,27,20,37,40
+36,Bulls vs Heat,Mixed Handball Championship 2030,Menor,38,22,Twimm,12-07-2018,Fecha 3,13-11,35,27,8,8
+37,Spurs vs Rockets,Senior Handball Championship 2027,Cadete,8,13,Oodoo,03-10-2021,Fecha 5,9-7,17,48,20,25
+38,Nets vs Raptors,Mixed Handball Championship 2030,Menor,38,45,Voomm,22-02-2018,Fecha 1,24-22,12,21,31,8
+39,Trail Blazers vs Nuggets,International Handball Championship 2022,Cadete,21,10,Wordtune,21-11-2016,Fecha 2,18-16,5,9,18,5
+40,Celtics vs Knicks,National Handball Championship 2021,Menor,8,42,Shufflebeat,05-11-2021,Fecha 4,14-12,27,15,20,34
+41,Trail Blazers vs Nuggets,Mixed Handball Championship 2030,Junior,37,30,Youopia,12-05-2022,Fecha 3,24-22,50,50,7,35
+42,Trail Blazers vs Nuggets,Women's Handball Championship 2025,Junior,30,49,Photofeed,14-08-2020,Fecha 4,11-9,29,13,26,24
+43,Lakers vs Warriors,International Handball Championship 2022,Menor,10,34,Vidoo,25-03-2022,Semifinal,23-21,28,29,8,15
+44,76ers vs Bucks,Indoor Handball Championship 2029,Menor,12,36,Browseblab,25-02-2019,Final,17-15,35,22,25,12
+45,Trail Blazers vs Nuggets,Beach Handball Championship 2028,Mayor,11,30,Devshare,10-10-2019,Fecha 7,18-16,46,45,9,13
+46,Thunder vs Clippers,Youth Handball Championship 2024,Juvenil,40,41,Bubbletube,29-04-2019,Fecha 1,22-20,19,23,3,41
+47,Celtics vs Knicks,Regional Handball Championship 2023,Cadete,26,23,Demizz,12-09-2017,Final,17-15,34,31,47,45
+48,76ers vs Bucks,Indoor Handball Championship 2029,Junior,20,5,Eazzy,24-08-2016,Fecha 3,6-4,8,25,37,27
+49,Lakers vs Warriors,International Handball Championship 2022,Mayor,44,18,Voolia,03-06-2018,Fecha 5,8-6,27,28,38,50
+50,Bulls vs Heat,Senior Handball Championship 2027,Mayor,30,34,Kamba,25-10-2020,Fecha 5,5-3,29,24,14,29
