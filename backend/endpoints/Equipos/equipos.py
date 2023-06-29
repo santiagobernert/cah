@@ -8,6 +8,15 @@ equipos = Blueprint('equipos', __name__)
 def equipo():
     equipos = Equipo.query.all()
     if request.method == 'GET':
+        if request.args:
+            num = request.args.get('num', type=int)
+            equipo = Equipo.query.filter_by(id=num).first()
+            print(equipo.__asdict__())
+            response = jsonify({
+            'equipo': equipo.__asdict__(),
+            })
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response 
         print([e.__asdict__() for e in equipos])
         response = jsonify({
             'equipos': [e.__asdict__() for e in equipos]
