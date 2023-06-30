@@ -9,7 +9,7 @@ def club():
     clubes = Club.query.all()
     if request.method == 'GET':
         if request.args:
-            nombre = request.args.get('nombre', type=int)
+            nombre = request.args.get('nombre', type=str)
             club = Club.query.filter_by(nombre=nombre).first()
             print(club.__asdict__())
             response = jsonify({
