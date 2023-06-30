@@ -8,6 +8,15 @@ clubes = Blueprint('clubes', __name__)
 def club():
     clubes = Club.query.all()
     if request.method == 'GET':
+        if request.args:
+            nombre = request.args.get('nombre', type=int)
+            club = Club.query.filter_by(nombre=nombre).first()
+            print(club.__asdict__())
+            response = jsonify({
+            'club': club.__asdict__(),
+            })
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response 
         print([c.__asdict__() for c in clubes])
         response = jsonify({
             'clubes': [c.__asdict__() for c in clubes]
